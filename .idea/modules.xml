@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BCProj.iml" filepath="$PROJECT_DIR$/BCProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_main.iml" group="BCProj" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_test.iml" group="BCProj" />
     </modules>
   </component>
 </project>
