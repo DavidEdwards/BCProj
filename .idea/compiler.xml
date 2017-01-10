@@ -12,6 +12,8 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <bytecodeTargetLevel>
+      <module name="BattleCode2017_main" target="1.8" />
+      <module name="BattleCode2017_test" target="1.8" />
       <module name="BCProj_main" target="1.8" />
       <module name="BCProj_test" target="1.8" />
     </bytecodeTargetLevel>
