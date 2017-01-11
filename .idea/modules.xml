@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj-New.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj-New.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj-New_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj-New_main.iml" group="BCProj-New" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj-New_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj-New_test.iml" group="BCProj-New" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_main.iml" group="BCProj" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_test.iml" group="BCProj" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/BattleCode2017.iml" filepath="$PROJECT_DIR$/.idea/modules/BattleCode2017.iml" />
