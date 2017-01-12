@@ -133,9 +133,6 @@ public strictfp class RobotPlayer {
                         rc.plantTree(NE);
                     }
                 }
-                //if (rc.canPlantTree() && rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0){
-                //    rc.plantTree(randomDirection());
-                //}
 
                 //water the lowest HP tree in range
                 TreeInfo[] trees = rc.senseNearbyTrees();
@@ -171,16 +168,6 @@ public strictfp class RobotPlayer {
                     }
                 }
 
-
-                // Randomly attempt to build a soldier or lumberjack in this direction
-                //if (rc.canBuildRobot(RobotType.SCOUT, dir) && Math.random() < .01) {
-                //    rc.buildRobot(RobotType.SCOUT, dir);
-                //} else if (rc.canBuildRobot(RobotType.LUMBERJACK, dir) && Math.random() < .01 && rc.isBuildReady()) {
-                //    rc.buildRobot(RobotType.LUMBERJACK, dir);
-                //}
-
-                // Move randomly
-                //tryMove(randomDirection());
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
