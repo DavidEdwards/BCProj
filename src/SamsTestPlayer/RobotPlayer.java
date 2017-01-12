@@ -1,5 +1,6 @@
 package SamsTestPlayer;
 import battlecode.common.*;
+import scala.reflect.internal.Trees;
 
 public strictfp class RobotPlayer {
     static RobotController rc;
@@ -9,6 +10,9 @@ public strictfp class RobotPlayer {
      * If this method returns, the robot dies!
     **/
     @SuppressWarnings("unused")
+
+    static int GARDENER_CHANNEL = 5;
+    static int GARDENER_MAX = 100;
 
     //public enum rcstate{none, chop, shake}
 
@@ -50,10 +54,12 @@ public strictfp class RobotPlayer {
 
                 // Generate a random direction
                 Direction dir = randomDirection();
+                int prevNumeGard = rc.readBroadcast(GARDENER_CHANNEL);
 
                 // Randomly attempt to build a gardener in this direction
-                if (rc.canHireGardener(dir) && Math.random() < .01) {
+                if (prevNumeGard <= GARDENER_MAX &&rc.canBuildRobot(RobotType.GARDENER, dir)) {
                     rc.hireGardener(dir);
+                    rc.broadcast(GARDENER_CHANNEL, prevNumeGard + 1);
                 }
 
                 // Move randomly
@@ -91,15 +97,90 @@ public strictfp class RobotPlayer {
                 // Generate a random direction
                 Direction dir = randomDirection();
 
-                // Randomly attempt to build a soldier or lumberjack in this direction
-                if (rc.canBuildRobot(RobotType.SCOUT, dir) && Math.random() < .01) {
-                    rc.buildRobot(RobotType.SCOUT, dir);
-                } else if (rc.canBuildRobot(RobotType.LUMBERJACK, dir) && Math.random() < .01 && rc.isBuildReady()) {
-                    rc.buildRobot(RobotType.LUMBERJACK, dir);
+                Direction E = new Direction(0);
+                Direction SE = new Direction((float)0.785398);
+                Direction S = new Direction((float)1.5708);
+                Direction SW = new Direction((float)2.35619);
+                Direction W = new Direction((float)3.14159);
+                Direction NW = new Direction((float)3.92699);
+                Direction N = new Direction((float)4.71239);
+                Direction NE = new Direction((float)5.49779);
+
+                System.out.println("North:" + N);
+                System.out.println("South:" + S);
+                System.out.println("East:" + E);
+                System.out.println("West:" + W);
+
+                //Direction NE = Direction( E.getDeltaX(1), N.getDeltaY(1) );
+
+                //if you can plant a tree plant one
+                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0){
+                    if(rc.canPlantTree(E)){
+                        rc.plantTree(E);
+                    }else if(rc.canPlantTree(SE)){
+                        rc.plantTree(SE);
+                    }else if(rc.canPlantTree(S)){
+                        rc.plantTree(S);
+                    }else if(rc.canPlantTree(SW)){
+                        rc.plantTree(SW);
+                    }else if(rc.canPlantTree(W)){
+                        rc.plantTree(W);
+                    }else if(rc.canPlantTree(NW)){
+                        rc.plantTree(NW);
+                    }else if(rc.canPlantTree(N)){
+                        rc.plantTree(N);
+                    }else if(rc.canPlantTree(NE)){
+                        rc.plantTree(NE);
+                    }
+                }
+                //if (rc.canPlantTree() && rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0){
+                //    rc.plantTree(randomDirection());
+                //}
+
+                //water the lowest HP tree in range
+                TreeInfo[] trees = rc.senseNearbyTrees();
+                float LowestTreeHP = 50;
+                TreeInfo TargetWaterTree = null;
+
+                for (TreeInfo t : trees) {
+                    if (t.health < LowestTreeHP) {
+                        LowestTreeHP = t.health;
+                        TargetWaterTree = t;
+                    }
                 }
 
+                if(TargetWaterTree != null){
+                    if (rc.canWater(TargetWaterTree.getID() )) {
+                        rc.water(TargetWaterTree.getID());
+                    }
+                }
+
+                //look for trees to shake
+                TreeInfo TargetShakeTree = null;
+                int NumOfBull = 0;
+                for (TreeInfo t : trees) {
+                    if (t.containedBullets > NumOfBull) {
+                        NumOfBull = t.containedBullets;
+                        TargetShakeTree = t;
+                    }
+                }
+
+                if(TargetShakeTree != null){
+                    if (rc.canShake(TargetShakeTree.getID() )) {
+                        rc.shake(TargetShakeTree.getID());
+                    }
+                }
+
+
+                // Randomly attempt to build a soldier or lumberjack in this direction
+                //if (rc.canBuildRobot(RobotType.SCOUT, dir) && Math.random() < .01) {
+                //    rc.buildRobot(RobotType.SCOUT, dir);
+                //} else if (rc.canBuildRobot(RobotType.LUMBERJACK, dir) && Math.random() < .01 && rc.isBuildReady()) {
+                //    rc.buildRobot(RobotType.LUMBERJACK, dir);
+                //}
+
                 // Move randomly
-                tryMove(randomDirection());
+                //tryMove(randomDirection());
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
@@ -169,8 +250,8 @@ public strictfp class RobotPlayer {
 
                 int action = 0;
                 int noofbull = 0;
-                TreeInfo TargetTree = null;
 
+                TreeInfo TargetTree = null;
                 if(Trees.length > 0) {
                     //check for robots or bullets in trees
                     for (int i = 0; i < Trees.length; i++) {
