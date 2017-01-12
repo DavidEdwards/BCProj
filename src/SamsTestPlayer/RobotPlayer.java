@@ -1,10 +1,11 @@
 package SamsTestPlayer;
 import battlecode.common.*;
+import java.util.*;
 import scala.reflect.internal.Trees;
 
 public strictfp class RobotPlayer {
     static RobotController rc;
-
+    static Random myRand;
     /**
      * run() is the method that is called when a robot is instantiated in the Battlecode world.
      * If this method returns, the robot dies!
@@ -13,6 +14,7 @@ public strictfp class RobotPlayer {
 
     static int GARDENER_CHANNEL = 5;
     static int GARDENER_MAX = 100;
+    static int Num_of_Moves = 0;
 
     //public enum rcstate{none, chop, shake}
 
@@ -21,7 +23,7 @@ public strictfp class RobotPlayer {
         // This is the RobotController object. You use it to perform actions from this robot,
         // and to get information on its current status.
         RobotPlayer.rc = rc;
-
+        myRand = new Random(rc.getID());
         // Here, we've separated the controls into a different method for each RobotType.
         // You can add the missing ones or rewrite this into your own control structure.
         switch (rc.getType()) {
@@ -53,32 +55,16 @@ public strictfp class RobotPlayer {
             try {
 
                 // Generate a random direction
-                Direction dir = Direction.getWest();
-                //int prevNumeGard = rc.readBroadcast(GARDENER_CHANNEL);
+                Direction dir = randomDirection();
 
                 // Randomly attempt to build a gardener in this direction
-                //if (prevNumeGard <= GARDENER_MAX &&rc.canBuildRobot(RobotType.GARDENER, dir)) {
                 if(rc.getBuildCooldownTurns() == 0){
                     if (rc.canBuildRobot(RobotType.GARDENER, dir)) {
                         rc.hireGardener(dir);
-                        //rc.broadcast(GARDENER_CHANNEL, prevNumeGard + 1);
-                        rc.broadcast(rc.getID(), 0);
-                    }else{
-                        tryMove(Direction.getSouth());
                     }
                 }
 
-
-                // Move randomly
-                int NumMoves = rc.readBroadcast(rc.getID());
-                System.out.println(NumMoves);
-
-                if (NumMoves < 5) {
-
-                    tryMove(Direction.getSouth());
-
-                }
-                rc.broadcast(rc.getID(), NumMoves + 1);
+                //wander();
 
 
                 // Broadcast archon's location for other robots on the team to know
@@ -112,86 +98,92 @@ public strictfp class RobotPlayer {
 
                 // Generate a random direction
                 //Direction dir = randomDirection();
+                //int moves = rc.readBroadcast(rc.getID());
+                if(Num_of_Moves < 100) {
 
-                TreeInfo[] trees = rc.senseNearbyTrees();
-                if(trees.length < 5) {
-                    if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
-                        for (float i = 0; i < 6.2; i = i + (float)0.2) {
-                            Direction TempDir = new Direction(i);
-                            if (rc.canPlantTree(TempDir)) {
-                                rc.plantTree(TempDir);
-                                break;
+                    Num_of_Moves++;
+                    wander();
+
+                }else {
+                    TreeInfo[] trees = rc.senseNearbyTrees();
+                    if (trees.length < 5) {
+                        if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                            for (float i = 0; i < 6.2; i = i + (float) 0.2) {
+                                Direction TempDir = new Direction(i);
+                                if (rc.canPlantTree(TempDir)) {
+                                    rc.plantTree(TempDir);
+                                    break;
+                                }
                             }
+                        }
+
+
+                        //Direction E = new Direction(0);
+                        //Direction SE = new Direction((float) 0.785398);
+                        //Direction S = new Direction((float) 1.5708);
+                        //Direction SW = new Direction((float) 2.35619);
+                        //Direction W = new Direction((float) 3.14159);
+                        //Direction NW = new Direction((float) 3.92699);
+                        //Direction N = new Direction((float) 4.71239);
+                        //Direction NE = new Direction((float) 5.49779);
+
+                        //Direction NE = Direction( E.getDeltaX(1), N.getDeltaY(1) );
+
+                        //if you can plant a tree plant one
+                        //if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                        //    if (rc.canPlantTree(E)) {
+                        //        rc.plantTree(E);
+                        //    } else if (rc.canPlantTree(SE)) {
+                        //        rc.plantTree(SE);
+                        //    } else if (rc.canPlantTree(S)) {
+                        //        rc.plantTree(S);
+                        //    } else if (rc.canPlantTree(SW)) {
+                        //        rc.plantTree(SW);
+                        //    } else if (rc.canPlantTree(W)) {
+                        //        rc.plantTree(W);
+                        //    } else if (rc.canPlantTree(NW)) {
+                        //        rc.plantTree(NW);
+                        //    } else if (rc.canPlantTree(N)) {
+                        //        rc.plantTree(N);
+                        //    } else if (rc.canPlantTree(NE)) {
+                        //       rc.plantTree(NE);
+                        //   }
+                        //}
+                    }
+                    //water the lowest HP tree in range
+
+                    float LowestTreeHP = 50;
+                    TreeInfo TargetWaterTree = null;
+
+                    for (TreeInfo t : trees) {
+                        if (t.health < LowestTreeHP) {
+                            LowestTreeHP = t.health;
+                            TargetWaterTree = t;
                         }
                     }
 
+                    if (TargetWaterTree != null) {
+                        if (rc.canWater(TargetWaterTree.getID())) {
+                            rc.water(TargetWaterTree.getID());
+                        }
+                    }
 
-                    //Direction E = new Direction(0);
-                    //Direction SE = new Direction((float) 0.785398);
-                    //Direction S = new Direction((float) 1.5708);
-                    //Direction SW = new Direction((float) 2.35619);
-                    //Direction W = new Direction((float) 3.14159);
-                    //Direction NW = new Direction((float) 3.92699);
-                    //Direction N = new Direction((float) 4.71239);
-                    //Direction NE = new Direction((float) 5.49779);
+                    //look for trees to shake
+                    TreeInfo TargetShakeTree = null;
+                    int NumOfBull = 0;
+                    for (TreeInfo t : trees) {
+                        if (t.containedBullets > NumOfBull) {
+                            NumOfBull = t.containedBullets;
+                            TargetShakeTree = t;
+                        }
+                    }
 
-                    //Direction NE = Direction( E.getDeltaX(1), N.getDeltaY(1) );
-
-                    //if you can plant a tree plant one
-                    //if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
-                    //    if (rc.canPlantTree(E)) {
-                    //        rc.plantTree(E);
-                    //    } else if (rc.canPlantTree(SE)) {
-                    //        rc.plantTree(SE);
-                    //    } else if (rc.canPlantTree(S)) {
-                    //        rc.plantTree(S);
-                    //    } else if (rc.canPlantTree(SW)) {
-                    //        rc.plantTree(SW);
-                    //    } else if (rc.canPlantTree(W)) {
-                    //        rc.plantTree(W);
-                    //    } else if (rc.canPlantTree(NW)) {
-                    //        rc.plantTree(NW);
-                    //    } else if (rc.canPlantTree(N)) {
-                    //        rc.plantTree(N);
-                    //    } else if (rc.canPlantTree(NE)) {
-                     //       rc.plantTree(NE);
-                     //   }
-                    //}
-                }
-                //water the lowest HP tree in range
-
-                float LowestTreeHP = 50;
-                TreeInfo TargetWaterTree = null;
-
-                for (TreeInfo t : trees) {
-                    if (t.health < LowestTreeHP) {
-                        LowestTreeHP = t.health;
-                        TargetWaterTree = t;
+                    if (TargetShakeTree != null) {
+                        if (rc.canShake(TargetShakeTree.getID())) {
+                            rc.shake(TargetShakeTree.getID());
+                        }
                     }
                 }
-
-                if(TargetWaterTree != null){
-                    if (rc.canWater(TargetWaterTree.getID() )) {
-                        rc.water(TargetWaterTree.getID());
-                    }
-                }
-
-                //look for trees to shake
-                TreeInfo TargetShakeTree = null;
-                int NumOfBull = 0;
-                for (TreeInfo t : trees) {
-                    if (t.containedBullets > NumOfBull) {
-                        NumOfBull = t.containedBullets;
-                        TargetShakeTree = t;
-                    }
-                }
-
-                if(TargetShakeTree != null){
-                    if (rc.canShake(TargetShakeTree.getID() )) {
-                        rc.shake(TargetShakeTree.getID());
-                    }
-                }
-
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
@@ -388,14 +380,28 @@ public strictfp class RobotPlayer {
             }
 
     }
-    /**
-     * Returns a random Direction
-     * @return a random Direction
-     */
-    static Direction randomDirection() {
-        return new Direction((float)Math.random() * 2 * (float)Math.PI);
+
+
+    public static void wander() throws GameActionException {
+        try {
+            Direction dir = randomDirection();
+            if (rc.canMove(dir)) {
+                rc.move(dir);
+            }else{
+                dir = randomDirection();
+                if (rc.canMove(dir)) {
+                    rc.move(dir);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+
+    public static Direction randomDirection() {
+        return(new Direction(myRand.nextFloat()*2*(float)Math.PI));
+    }
     /**
      * Attempts to move in a given direction, while avoiding small obstacles directly in the path.
      *
