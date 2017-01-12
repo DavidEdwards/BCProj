@@ -21,6 +21,8 @@
 
 # User-specific stuff:
 battlecode-scaffold.iws
+.gitignore
+/.idea/workspace.xml
 
 # Eclipse user-specific files
 .classpath

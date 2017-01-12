@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03365bc2-66ac-4c4b-a663-df82d6c66905" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java" />
     </list>
@@ -97,14 +98,24 @@
       <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="107" column="38" lean-forward="false" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+            <state relative-caret-position="442">
+              <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#366#393#0" expanded="true" />
-                <element signature="e#15105#15106#0" expanded="true" />
-                <element signature="e#15179#15180#0" expanded="true" />
+                <element signature="e#16894#16895#0" expanded="true" />
+                <element signature="e#16968#16969#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -492,6 +503,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/MMKBplayer/RobotPlayer.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java" />
       </list>
     </option>
@@ -878,7 +890,14 @@
       <option name="project" value="LOCAL" />
       <updated>1484240925053</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="checked build workds and created MMKBplayer base under src (Our player)&#10;and confirmed that the player can be loaded into the client.&#10;&#10;Changes to our player should be done there and examplefuncsplayer should be left alone as an example and easy test oponent.">
+      <created>1484243347173</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1484243347173</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -965,8 +984,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#366#393#0" expanded="true" />
-            <element signature="e#15105#15106#0" expanded="true" />
-            <element signature="e#15179#15180#0" expanded="true" />
+            <element signature="e#16894#16895#0" expanded="true" />
+            <element signature="e#16968#16969#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -986,8 +1005,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#366#393#0" expanded="true" />
-            <element signature="e#15105#15106#0" expanded="true" />
-            <element signature="e#15179#15180#0" expanded="true" />
+            <element signature="e#16894#16895#0" expanded="true" />
+            <element signature="e#16968#16969#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1007,8 +1026,8 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#366#393#0" expanded="true" />
-            <element signature="e#15105#15106#0" expanded="true" />
-            <element signature="e#15179#15180#0" expanded="true" />
+            <element signature="e#16894#16895#0" expanded="true" />
+            <element signature="e#16968#16969#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1082,15 +1101,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="107" column="38" lean-forward="false" selection-start-line="107" selection-start-column="38" selection-end-line="107" selection-end-column="38" />
+        <state relative-caret-position="442">
+          <caret line="146" column="26" lean-forward="true" selection-start-line="146" selection-start-column="26" selection-end-line="146" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#366#393#0" expanded="true" />
-            <element signature="e#15105#15106#0" expanded="true" />
-            <element signature="e#15179#15180#0" expanded="true" />
+            <element signature="e#16894#16895#0" expanded="true" />
+            <element signature="e#16968#16969#0" expanded="true" />
           </folding>
         </state>
       </provider>

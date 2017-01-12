@@ -15,6 +15,7 @@ public strictfp class RobotPlayer {
     static int GARDENER_CHANNEL = 5;
     static int GARDENER_MAX = 100;
     static int Num_of_Moves = 0;
+    static Direction Direction_to_move = null;
 
     //public enum rcstate{none, chop, shake}
 
@@ -54,12 +55,18 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
 
+                float bulls = rc.getTeamBullets();
+                int vp = rc.getTeamVictoryPoints();
+                if((bulls/10) + vp > 1000){
+                    rc.donate(bulls);
+                }
+
                 // Generate a random direction
                 Direction dir = randomDirection();
 
                 // Randomly attempt to build a gardener in this direction
                 if(rc.getBuildCooldownTurns() == 0){
-                    if (rc.canBuildRobot(RobotType.GARDENER, dir)) {
+                    if (rc.getTeamBullets() > 250 && rc.canBuildRobot(RobotType.GARDENER, dir)) {
                         rc.hireGardener(dir);
                     }
                 }
@@ -71,6 +78,14 @@ public strictfp class RobotPlayer {
                 MapLocation myLocation = rc.getLocation();
                 rc.broadcast(0,(int)myLocation.x);
                 rc.broadcast(1,(int)myLocation.y);
+
+
+
+
+
+                if(rc.getTeamBullets() > 1000){
+                    rc.donate(500);
+                }
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
@@ -99,13 +114,42 @@ public strictfp class RobotPlayer {
                 // Generate a random direction
                 //Direction dir = randomDirection();
                 //int moves = rc.readBroadcast(rc.getID());
-                if(Num_of_Moves < 100) {
+
+                if(Direction_to_move == null){
+                    boolean direction_found = false;
+                    Direction_to_move = randomDirection();
+                    System.out.println(rc.getID() + "Can robot move: " + rc.canMove(Direction_to_move));
+                    if (rc.canMove(Direction_to_move) == false){
+                        System.out.println(rc.getID() + " searching for a direction");
+                        for (float i = 0; i < 6.2; i = i + (float) 0.1) {
+                            Direction_to_move = Direction_to_move.rotateRightRads(i);
+                            if (rc.canMove(Direction_to_move)){
+                                direction_found = true;
+                                break;
+                            }
+                        }
+                    }else{
+                        direction_found = true;
+                    }
+                    if (direction_found == false){
+                        //robot is penned in and cant move, stop it moving
+                        Num_of_Moves = 999999999;
+                        System.out.println(rc.getID() + " couldn't find a direction to move");
+                    }
+                }
+
+
+                if(Num_of_Moves < 25) {
 
                     Num_of_Moves++;
-                    wander();
+                    if (rc.canMove(Direction_to_move)) {
+                        rc.move(Direction_to_move);
+                    }else{
+                        Num_of_Moves = 999999999;
+                    }
 
                 }else {
-                    TreeInfo[] trees = rc.senseNearbyTrees();
+                    TreeInfo[] trees = rc.senseNearbyTrees((float)1.5,rc.getTeam());
                     if (trees.length < 5) {
                         if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
                             for (float i = 0; i < 6.2; i = i + (float) 0.2) {
