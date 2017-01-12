@@ -53,17 +53,33 @@ public strictfp class RobotPlayer {
             try {
 
                 // Generate a random direction
-                Direction dir = randomDirection();
-                int prevNumeGard = rc.readBroadcast(GARDENER_CHANNEL);
+                Direction dir = Direction.getWest();
+                //int prevNumeGard = rc.readBroadcast(GARDENER_CHANNEL);
 
                 // Randomly attempt to build a gardener in this direction
-                if (prevNumeGard <= GARDENER_MAX &&rc.canBuildRobot(RobotType.GARDENER, dir)) {
-                    rc.hireGardener(dir);
-                    rc.broadcast(GARDENER_CHANNEL, prevNumeGard + 1);
+                //if (prevNumeGard <= GARDENER_MAX &&rc.canBuildRobot(RobotType.GARDENER, dir)) {
+                if(rc.getBuildCooldownTurns() == 0){
+                    if (rc.canBuildRobot(RobotType.GARDENER, dir)) {
+                        rc.hireGardener(dir);
+                        //rc.broadcast(GARDENER_CHANNEL, prevNumeGard + 1);
+                        rc.broadcast(rc.getID(), 0);
+                    }else{
+                        tryMove(Direction.getSouth());
+                    }
                 }
 
+
                 // Move randomly
-                tryMove(randomDirection());
+                int NumMoves = rc.readBroadcast(rc.getID());
+                System.out.println(NumMoves);
+
+                if (NumMoves < 5) {
+
+                    tryMove(Direction.getSouth());
+
+                }
+                rc.broadcast(rc.getID(), NumMoves + 1);
+
 
                 // Broadcast archon's location for other robots on the team to know
                 MapLocation myLocation = rc.getLocation();
@@ -95,47 +111,55 @@ public strictfp class RobotPlayer {
                 MapLocation archonLoc = new MapLocation(xPos,yPos);
 
                 // Generate a random direction
-                Direction dir = randomDirection();
+                //Direction dir = randomDirection();
 
-                Direction E = new Direction(0);
-                Direction SE = new Direction((float)0.785398);
-                Direction S = new Direction((float)1.5708);
-                Direction SW = new Direction((float)2.35619);
-                Direction W = new Direction((float)3.14159);
-                Direction NW = new Direction((float)3.92699);
-                Direction N = new Direction((float)4.71239);
-                Direction NE = new Direction((float)5.49779);
-
-                System.out.println("North:" + N);
-                System.out.println("South:" + S);
-                System.out.println("East:" + E);
-                System.out.println("West:" + W);
-
-                //Direction NE = Direction( E.getDeltaX(1), N.getDeltaY(1) );
-
-                //if you can plant a tree plant one
-                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0){
-                    if(rc.canPlantTree(E)){
-                        rc.plantTree(E);
-                    }else if(rc.canPlantTree(SE)){
-                        rc.plantTree(SE);
-                    }else if(rc.canPlantTree(S)){
-                        rc.plantTree(S);
-                    }else if(rc.canPlantTree(SW)){
-                        rc.plantTree(SW);
-                    }else if(rc.canPlantTree(W)){
-                        rc.plantTree(W);
-                    }else if(rc.canPlantTree(NW)){
-                        rc.plantTree(NW);
-                    }else if(rc.canPlantTree(N)){
-                        rc.plantTree(N);
-                    }else if(rc.canPlantTree(NE)){
-                        rc.plantTree(NE);
-                    }
-                }
-
-                //water the lowest HP tree in range
                 TreeInfo[] trees = rc.senseNearbyTrees();
+                if(trees.length < 5) {
+                    if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                        for (float i = 0; i < 6.2; i = i + (float)0.2) {
+                            Direction TempDir = new Direction(i);
+                            if (rc.canPlantTree(TempDir)) {
+                                rc.plantTree(TempDir);
+                                break;
+                            }
+                        }
+                    }
+
+
+                    //Direction E = new Direction(0);
+                    //Direction SE = new Direction((float) 0.785398);
+                    //Direction S = new Direction((float) 1.5708);
+                    //Direction SW = new Direction((float) 2.35619);
+                    //Direction W = new Direction((float) 3.14159);
+                    //Direction NW = new Direction((float) 3.92699);
+                    //Direction N = new Direction((float) 4.71239);
+                    //Direction NE = new Direction((float) 5.49779);
+
+                    //Direction NE = Direction( E.getDeltaX(1), N.getDeltaY(1) );
+
+                    //if you can plant a tree plant one
+                    //if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                    //    if (rc.canPlantTree(E)) {
+                    //        rc.plantTree(E);
+                    //    } else if (rc.canPlantTree(SE)) {
+                    //        rc.plantTree(SE);
+                    //    } else if (rc.canPlantTree(S)) {
+                    //        rc.plantTree(S);
+                    //    } else if (rc.canPlantTree(SW)) {
+                    //        rc.plantTree(SW);
+                    //    } else if (rc.canPlantTree(W)) {
+                    //        rc.plantTree(W);
+                    //    } else if (rc.canPlantTree(NW)) {
+                    //        rc.plantTree(NW);
+                    //    } else if (rc.canPlantTree(N)) {
+                    //        rc.plantTree(N);
+                    //    } else if (rc.canPlantTree(NE)) {
+                     //       rc.plantTree(NE);
+                     //   }
+                    //}
+                }
+                //water the lowest HP tree in range
+
                 float LowestTreeHP = 50;
                 TreeInfo TargetWaterTree = null;
 
@@ -422,6 +446,8 @@ public strictfp class RobotPlayer {
         // A move never happened, so return false.
         return false;
     }
+
+
 
     /**
      * A slightly more complicated example function, this returns true if the given bullet is on a collision
