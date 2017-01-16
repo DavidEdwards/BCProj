@@ -7,18 +7,20 @@ import java.awt.*;
  * Created by movia on 1/16/2017.
  */
 public class Tasks {
+
+
     /**
      * General task to dodge a bullet with the passed Bullet information
      *
      * @param rc the robot that needs to dodge.
-     * @param bi the bullet that needs to be dodged.
      * @return True if the line of the bullet's path intersects with this robot's current position.
      */
 
-    static boolean DodgeBullet(RobotController rc, BulletInfo bi)
-    {
+    static void DodgeBullet(RobotController rc, BulletInfo bi) throws GameActionException {
 
-        return false;
+        while (SharedSubs.willCollideWithMe(rc, bi)) {
+            SharedSubs.trySidestep(rc, bi);
+        }
     }
 
     static boolean Combat(RobotController rc, BulletInfo bi)
@@ -51,15 +53,18 @@ public class Tasks {
         return false;
     }
 
-    static boolean BuildRobot(RobotController rc) throws GameActionException
+    static boolean BuildRobot(RobotController rc, RobotType Rtype) throws GameActionException
     {
         try {
-            // Generate a random direction
-            Direction dir = SharedSubs.randomDirection();
-
-            // Randomly attempt to build a gardener in this direction
-            if (rc.canHireGardener(dir) && Math.random() < .01) {
-                rc.hireGardener(dir);
+            switch (Rtype) {
+                case GARDENER:
+                    // Generate a random direction
+                    Direction dir = SharedSubs.randomDirection();
+                    //Attempt to hire gardner in this direction
+                    if (rc.canHireGardener(dir) && Math.random() < .01) {
+                        rc.hireGardener(dir);
+                    }
+                    break;
             }
         } catch (Exception e) {
             System.out.println("BuildRobot Exception");

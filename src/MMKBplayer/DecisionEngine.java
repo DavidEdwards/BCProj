@@ -1,6 +1,7 @@
 package MMKBplayer;
 
 import battlecode.common.*;
+import javafx.scene.shape.Arc;
 
 /**
  * Created by movia on 1/16/2017.
@@ -19,13 +20,11 @@ public class DecisionEngine {
         Build, Dodge, Combat, Shake, Chop, Plant, Water, Lure
     }
 
-    static Task GetTaskDecision(RobotController rc)
-    {
-        try
-        {
+    static Task GetTaskDecision(RobotController rc) {
+        try {
             switch (rc.getType()) {
-            case ARCHON:
-                return DecisionEngine.runArchon();
+                case ARCHON:
+                    return DecisionEngine.runArchon(rc);
             }
         } catch (Exception e) {
             System.out.println("GetTaskDecision Exception");
@@ -34,15 +33,27 @@ public class DecisionEngine {
         return null;
     }
 
-    static  Task runArchon() throws GameActionException {
-        Task ArchonTask = Task.Build;
+    static Task runArchon(RobotController rc) throws GameActionException {
+        Task ArchonTask = null;
         try
         {
+            BulletInfo[] Bullets = rc.senseNearbyBullets();
+            if (Bullets.length > 0) {
+                for (BulletInfo bi : Bullets) {
+                    if (SharedSubs.willCollideWithMe(rc, bi)) {
+                        ArchonTask = Task.Dodge;
+                    }
+                }
+            }else
+            {
+                ArchonTask = Task.Build;
+            }
             // Add code here to determin best current task for this Archon
         } catch (Exception e) {
             System.out.println("Archon Exception");
             e.printStackTrace();
         }
+
         return ArchonTask;
     }
 }

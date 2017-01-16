@@ -31,7 +31,7 @@ public class SharedSubs {
     /**
      * Attempts to move in a given direction, while avoiding small obstacles direction in the path.
      *
-     * @param rc The robot to perform the action.
+     * @param rc the robot to move.
      * @param dir The intended direction of movement
      * @param degreeOffset Spacing between checked directions (degrees)
      * @param checksPerSide Number of extra directions checked on each side, if intended direction was unavailable
@@ -41,23 +41,23 @@ public class SharedSubs {
     static boolean tryMove(RobotController rc, Direction dir, float degreeOffset, int checksPerSide) throws GameActionException {
 
         // First, try intended direction
-        if (rc.canMove(dir)) {
+        if (!rc.hasMoved() && rc.canMove(dir)) {
             rc.move(dir);
             return true;
         }
 
         // Now try a bunch of similar angles
-        boolean moved = false;
+        //boolean moved = rc.hasMoved();
         int currentCheck = 1;
 
         while(currentCheck<=checksPerSide) {
             // Try the offset of the left side
-            if(rc.canMove(dir.rotateLeftDegrees(degreeOffset*currentCheck))) {
+            if(!rc.hasMoved() && rc.canMove(dir.rotateLeftDegrees(degreeOffset*currentCheck))) {
                 rc.move(dir.rotateLeftDegrees(degreeOffset*currentCheck));
                 return true;
             }
             // Try the offset on the right side
-            if(rc.canMove(dir.rotateRightDegrees(degreeOffset*currentCheck))) {
+            if(! rc.hasMoved() && rc.canMove(dir.rotateRightDegrees(degreeOffset*currentCheck))) {
                 rc.move(dir.rotateRightDegrees(degreeOffset*currentCheck));
                 return true;
             }
@@ -89,7 +89,7 @@ public class SharedSubs {
         float theta = propagationDirection.radiansBetween(directionToRobot);
 
         // If theta > 90 degrees, then the bullet is traveling away from us and we can break early
-        if (Math.abs(theta) > Math.PI/2) {
+        if (Math.abs(theta) > Math.PI / 2) {
             return false;
         }
 
@@ -97,8 +97,17 @@ public class SharedSubs {
         // This is the distance of a line that goes from myLocation and intersects perpendicularly with propagationDirection.
         // This corresponds to the smallest radius circle centered at our location that would intersect with the
         // line that is the path of the bullet.
-        float perpendicularDist = (float)Math.abs(distToRobot * Math.sin(theta)); // soh cah toa :)
+        float perpendicularDist = (float) Math.abs(distToRobot * Math.sin(theta)); // soh cah toa :)
 
         return (perpendicularDist <= rc.getType().bodyRadius);
+    }
+
+    static boolean trySidestep(RobotController rc, BulletInfo bullet) throws GameActionException{
+
+        Direction towards = bullet.getDir();
+        MapLocation leftGoal = rc.getLocation().add(towards.rotateLeftDegrees(90), rc.getType().bodyRadius);
+        MapLocation rightGoal = rc.getLocation().add(towards.rotateRightDegrees(90), rc.getType().bodyRadius);
+
+        return(tryMove(rc, towards.rotateRightDegrees(90)) || tryMove(rc, towards.rotateLeftDegrees(90)));
     }
 }

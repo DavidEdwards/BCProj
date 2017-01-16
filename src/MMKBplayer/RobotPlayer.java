@@ -45,10 +45,14 @@ public strictfp class RobotPlayer {
 
                 switch (DecisionEngine.GetTaskDecision(rc))
                 {
-                    case Build:
-                        Tasks.BuildRobot(rc);
+                    case Dodge:
+                        BulletInfo[] bi = rc.senseNearbyBullets();
+                        Tasks.DodgeBullet(rc, bi[0]);
                         break;
-                }
+                    case Build:
+                        Tasks.BuildRobot(rc, RobotType.GARDENER);
+                        break;
+                };
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
@@ -176,10 +180,8 @@ public strictfp class RobotPlayer {
         }
     }
 
+    static void DoTask(RobotController rc)
+    {
 
-
-
-
-
-
+    }
 }
