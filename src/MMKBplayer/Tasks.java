@@ -70,6 +70,7 @@ public class Tasks {
                     }
                     break;
             }
+            DecisionEngine.RobotsBuilt++;
         } catch (Exception e) {
             System.out.println("BuildRobot Exception");
             e.printStackTrace();
