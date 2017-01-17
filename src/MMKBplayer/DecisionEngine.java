@@ -1,9 +1,7 @@
 package MMKBplayer;
 
 import battlecode.common.*;
-import com.sun.xml.internal.ws.api.pipe.FiberContextSwitchInterceptor;
 
-import java.awt.*;
 
 /**
  * Created by movian on 1/16/2017.
@@ -20,18 +18,21 @@ public class DecisionEngine {
     6 - Lure
     7 - Build
      */
-    static int ArchonWeightlist[] = {100,0,60,0,0,0,0,40};
-    static int GardnerWeightlist[] = {100,50,60,40,70,70,20,40};
-    static int SoldierWeightlist[] = {100,50,60,40,70,70,20,40};
-    static int TankWeightlist[] = {100,50,60,40,70,70,20,40};
-    static int ScoutWeightlist[] = {100,50,60,40,70,70,20,40};
-    static int LumberjackWeightlist[] = {100,50,60,40,70,70,20,40};
+    static int ArchonWeightlist[] = {0,0,0,0,0,0,0,0};
+    static int GardnerWeightlist[] = {0,0,0,0,0,0,0,0};
+    static int SoldierWeightlist[] = {0,0,0,0,0,0,0,0};
+    static int TankWeightlist[] = {0,0,0,0,0,0,0,0};
+    static int ScoutWeightlist[] = {0,0,0,0,0,0,0,0};
+    static int LumberjackWeightlist[] = {0,0,0,0,0,0,0,0};
     static int WorkingWeights[];
 
-    static int RobotsBuilt = 0;
+    static int RobotsBuilt[] = {0,0,0,0,0};
 
-    static Task[] TaskList = {Task.Dodge, Task.Combat, Task.Shake, Task.Chop, Task.Plant, Task.Water, Task.Lure, Task.Build} ;
-public enum Task{
+    static RobotType BuildType = RobotType.GARDENER;
+
+    static RobotTaskList[] TaskList = {RobotTaskList.Dodge, RobotTaskList.Combat, RobotTaskList.Shake, RobotTaskList.Chop, RobotTaskList.Plant, RobotTaskList.Water, RobotTaskList.Lure, RobotTaskList.Build} ;
+
+    public enum RobotTaskList{
     Build, Dodge, Combat, Shake, Chop, Plant, Water, Lure
 }
 
@@ -60,8 +61,8 @@ public enum Task{
         }
     }
 
-    static Task GetTaskDecision(RobotController rc,  BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) {
-        Task RobotTask = null;
+    static RobotTaskList GetTaskDecision(RobotController rc,  BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) {
+        RobotTaskList RobotTask = RobotTaskList.Dodge;
         try {
             BaseLineArray(rc.getType());
 
@@ -72,7 +73,7 @@ public enum Task{
             if(rc.getType() == RobotType.LUMBERJACK){ WeightChop(Trees);}
             if(rc.getType() == RobotType.GARDENER){WeightPlant(Trees); WeightWater(Trees);}
             if(rc.getType() == RobotType.SCOUT){WeightLure(rc); }
-            if(rc.getType() == RobotType.GARDENER){WeightBuild(rc); }
+            if(rc.getType() == RobotType.GARDENER || rc.getType() == RobotType.ARCHON ){WeightBuild(rc); }
 
             //Check final numbers from decision engine
             int Decision = 0;
@@ -84,8 +85,9 @@ public enum Task{
                     weight = WorkingWeights[i];
                 }
             }
+            RobotTask = TaskList[Decision];
         } catch (Exception e) {
-            System.out.println("GetTaskDecision Exception");
+            System.out.println("Get TaskDecision Exception");
             e.printStackTrace();
         }
         return RobotTask;
@@ -93,7 +95,7 @@ public enum Task{
 
     static void WeightDodge(BulletInfo[] Bullets)
     {
-        if (Bullets.length > 0) {WorkingWeights[0] += Bullets.length * 10;}
+        if (Bullets.length > 0) {WorkingWeights[0] += (Bullets.length * 20);}
     }
 
     static void WeightCombat(RobotInfo[] Robots)
@@ -111,7 +113,7 @@ public enum Task{
         if (Trees.length > 0)
         {
             for(int i = 0; i < Trees.length;i++) {
-                if (Trees[i].containedBullets > 2 ){ WorkingWeights[2] += + 10;}
+                if (Trees[i].containedBullets > 2 ){ WorkingWeights[2] += 2;}
             }
         }
     }
@@ -147,8 +149,8 @@ public enum Task{
 
     static void WeightBuild(RobotController rc)
     {
-        if( RobotsBuilt < rc.getRoundNum() / 100 ){
-            WorkingWeights[7] += rc.getRoundNum() / 100;
+        if (RobotsBuilt[0] < (rc.getRoundNum() /100)) {
+            WorkingWeights[7] += 10;
         }
     }
 
