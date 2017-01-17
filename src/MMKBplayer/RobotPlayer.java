@@ -1,7 +1,6 @@
 package MMKBplayer;
 import battlecode.common.*;
 
-
 public strictfp class RobotPlayer {
     static RobotController rc;
 
@@ -10,31 +9,43 @@ public strictfp class RobotPlayer {
      * If this method returns, the robot dies!
     **/
     @SuppressWarnings("unused")
+
+
+
     public static void run(RobotController rc) throws GameActionException {
 
         // This is the RobotController object. You use it to perform actions from this robot,
         // and to get information on its current status.
         RobotPlayer.rc = rc;
 
+        BulletInfo[] Bullets = rc.senseNearbyBullets();
+        TreeInfo[] Tress = rc.senseNearbyTrees();
+        RobotInfo[] Robots = rc.senseNearbyRobots();
         // Here, we've separated the controls into a different method for each RobotType.
         // You can add the missing ones or rewrite this into your own control structure.
         switch (rc.getType()) {
             case ARCHON:
-                runArchon();
+                runArchon(Bullets, Tress, Robots);
                 break;
             case GARDENER:
-                runGardener();
+                runGardener(Bullets, Tress, Robots);
                 break;
             case SOLDIER:
-                runSoldier();
+                runSoldier(Bullets, Tress, Robots);
+                break;
+            case TANK:
+                runTank(Bullets, Tress, Robots);
+                break;
+            case SCOUT:
+                runScout(Bullets, Tress, Robots);
                 break;
             case LUMBERJACK:
-                runLumberjack();
+                runLumberjack(Bullets, Tress, Robots);
                 break;
         }
 	}
 
-    static void runArchon() throws GameActionException {
+    static void runArchon(BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) throws GameActionException {
         System.out.println("I'm an archon!");
 
         // The code you want your robot to perform every round should be in this loop
@@ -42,18 +53,55 @@ public strictfp class RobotPlayer {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
+                if (Clock.getBytecodesLeft() > 100) {
 
-                switch (DecisionEngine.GetTaskDecision(rc))
-                {
-                    case Dodge:
-                        BulletInfo[] bi = rc.senseNearbyBullets();
-                        Tasks.DodgeBullet(rc, bi[0]);
-                        break;
-                    case Build:
-                        Tasks.BuildRobot(rc, RobotType.GARDENER);
-                        break;
-                };
+                    DecisionEngine.Task CurrentTask = DecisionEngine.GetTaskDecision(rc, Bullets, Trees, Robots);
+                    Tasks.PerformTask(rc, CurrentTask);
+                }
+                // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
+                Clock.yield();
 
+            } catch (Exception e) {
+                System.out.println("Archon Exception");
+                e.printStackTrace();
+            }
+        }
+    }
+    static void runTank(BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) throws GameActionException {
+        System.out.println("I'm an archon!");
+
+        // The code you want your robot to perform every round should be in this loop
+        while (true) {
+
+            // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
+            try {
+                if (Clock.getBytecodesLeft() > 100) {
+
+                    DecisionEngine.Task CurrentTask = DecisionEngine.GetTaskDecision(rc, Bullets, Trees, Robots);
+                    Tasks.PerformTask(rc, CurrentTask);
+                }
+                // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
+                Clock.yield();
+
+            } catch (Exception e) {
+                System.out.println("Archon Exception");
+                e.printStackTrace();
+            }
+        }
+    }
+    static void runScout(BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) throws GameActionException {
+        System.out.println("I'm an archon!");
+
+        // The code you want your robot to perform every round should be in this loop
+        while (true) {
+
+            // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
+            try {
+                if (Clock.getBytecodesLeft() > 100) {
+
+                    DecisionEngine.Task CurrentTask = DecisionEngine.GetTaskDecision(rc, Bullets, Trees, Robots);
+                    Tasks.PerformTask(rc, CurrentTask);
+                }
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
 
@@ -64,7 +112,7 @@ public strictfp class RobotPlayer {
         }
     }
 
-	static void runGardener() throws GameActionException {
+	static void runGardener(BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) throws GameActionException {
         System.out.println("I'm a gardener!");
 
         // The code you want your robot to perform every round should be in this loop
@@ -101,7 +149,7 @@ public strictfp class RobotPlayer {
         }
     }
 
-    static void runSoldier() throws GameActionException {
+    static void runSoldier(BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) throws GameActionException {
         System.out.println("I'm an soldier!");
         Team enemy = rc.getTeam().opponent();
 
@@ -137,7 +185,7 @@ public strictfp class RobotPlayer {
         }
     }
 
-    static void runLumberjack() throws GameActionException {
+    static void runLumberjack(BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots) throws GameActionException {
         System.out.println("I'm a lumberjack!");
         Team enemy = rc.getTeam().opponent();
 
@@ -178,10 +226,5 @@ public strictfp class RobotPlayer {
                 e.printStackTrace();
             }
         }
-    }
-
-    static void DoTask(RobotController rc)
-    {
-
     }
 }

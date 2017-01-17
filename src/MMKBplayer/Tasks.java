@@ -1,7 +1,6 @@
 package MMKBplayer;
 
 import battlecode.common.*;
-import java.awt.*;
 
 /**
  * Created by movia on 1/16/2017.
@@ -16,6 +15,11 @@ public class Tasks {
      * @return True if the line of the bullet's path intersects with this robot's current position.
      */
 
+    static void PerformTask( RobotController rc, DecisionEngine.Task RobotTask)
+    {
+
+    }
+
     static void DodgeBullet(RobotController rc, BulletInfo bi) throws GameActionException {
 
         while (SharedSubs.willCollideWithMe(rc, bi)) {
@@ -23,31 +27,31 @@ public class Tasks {
         }
     }
 
-    static boolean Combat(RobotController rc, BulletInfo bi)
+    static boolean Combat(RobotController rc)
     {
 
         return false;
     }
 
-    static boolean Shakeing(RobotController rc, BulletInfo bi)
+    static boolean Shakeing(RobotController rc)
     {
 
         return false;
     }
 
-    static boolean Chopping(RobotController rc, BulletInfo bi)
+    static boolean Chopping(RobotController rc)
     {
 
         return false;
     }
 
-    static boolean TreePlanting(RobotController rc, BulletInfo bi)
+    static boolean TreePlanting(RobotController rc)
     {
 
         return false;
     }
 
-    static boolean TreeWatering(RobotController rc, BulletInfo bi)
+    static boolean TreeWatering(RobotController rc)
     {
 
         return false;

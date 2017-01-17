@@ -9,6 +9,7 @@ import java.awt.*;
  */
 public class SharedSubs {
 
+
     /**
      * Returns a random Direction
      * @return a random Direction
