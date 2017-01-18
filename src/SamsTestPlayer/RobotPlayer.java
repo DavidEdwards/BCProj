@@ -114,7 +114,6 @@ public strictfp class RobotPlayer {
 
                 //wander();
 
-
                 // Broadcast archon's location for other robots on the team to know
                 MapLocation myLocation = rc.getLocation();
                 rc.broadcast(0,(int)myLocation.x);
@@ -359,23 +358,24 @@ public strictfp class RobotPlayer {
                 MapLocation myLocation = rc.getLocation();
 
                 int action = 0;
-                int noofbull = 0;
+                int noofbull = 4;
 
                 TreeInfo TargetTree = null;
                 if(Trees.length > 0) {
                     //check for robots or bullets in trees
                     for (int i = 0; i < Trees.length; i++) {
                         //Check if Tree Contains a Robot
-                        if (Trees[i].containedRobot != null) {
+
+                        if (Trees[i].containedBullets > noofbull) {
+                            action = 2;
+                            noofbull = Trees[i].containedBullets;
+                            TargetTree = Trees[i];
+                            break;
+                        }else if (Trees[i].containedRobot != null || Trees[i].getTeam() != rc.getTeam()) {
                             //Tree contains a robot check if tree in range to chop.
                             action = 1;
                             TargetTree = Trees[i];
                             break;
-
-                        } else if (Trees[i].containedBullets > noofbull) {
-                            action = 2;
-                            noofbull = Trees[i].containedBullets;
-                            TargetTree = Trees[i];
                         }
                     }
                 }
