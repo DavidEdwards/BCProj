@@ -12,7 +12,14 @@ public strictfp class RobotPlayer {
     **/
     @SuppressWarnings("unused")
 
-    static int GARDENER_CHANNEL = 5;
+    //channels
+    static int LEADER_TRACKING_CHANNEL = 3;
+    static int GARDENER_COUNT_CHANNEL = 4;
+    static int LUMBERJACK_COUNT_CHANNEL = 5;
+
+    //variables
+    static boolean AM_LEADER = false;
+    static int LEADER_TURNS = 0;
     static int GARDENER_MAX = 100;
     static int Num_of_Moves = 0;
     static Direction Direction_to_move = null;
@@ -46,14 +53,47 @@ public strictfp class RobotPlayer {
         }
 	}
 
+
+    static void checkForLeader(int RoundNum, int broadcastRound, int turnDifference) throws GameActionException {
+
+        //check if round 0 and round broadcast channel is 0 if so become leader
+        if(broadcastRound == 0){
+            AM_LEADER =  true;
+            rc.broadcast(LEADER_TRACKING_CHANNEL,RoundNum);
+        }
+        //check if broadcastRound is turnDifference greater than RoundNum if so become leader
+        if((RoundNum - broadcastRound) > turnDifference){
+            AM_LEADER =  true;
+            rc.broadcast(LEADER_TRACKING_CHANNEL,RoundNum);
+        }
+    }
+
+    static void LeaderCode() throws GameActionException {
+
+        //System.out.println("num guard:" + rc.readBroadcast(GARDENER_COUNT_CHANNEL));
+        //System.out.println("num Jack:" + rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL));
+
+        //rc.broadcast(GARDENER_COUNT_CHANNEL,0);
+        //rc.broadcast(LUMBERJACK_COUNT_CHANNEL,0);
+
+
+    }
+
+
     static void runArchon() throws GameActionException {
         System.out.println("I'm an archon!");
-
+        Direction Archondir = Direction.getNorth();
         // The code you want your robot to perform every round should be in this loop
         while (true) {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
+                Archondir = Archondir.rotateRightDegrees(45);
+                tryMove(Archondir);
+                checkForLeader(rc.getRoundNum(), rc.readBroadcast(LEADER_TRACKING_CHANNEL), 10);
+                if(AM_LEADER == true){
+                    LeaderCode();
+                }
 
                 float bulls = rc.getTeamBullets();
                 int vp = rc.getTeamVictoryPoints();
@@ -68,6 +108,7 @@ public strictfp class RobotPlayer {
                 if(rc.getBuildCooldownTurns() == 0){
                     if (rc.getTeamBullets() > 250 && rc.canBuildRobot(RobotType.GARDENER, dir)) {
                         rc.hireGardener(dir);
+
                     }
                 }
 
@@ -78,9 +119,6 @@ public strictfp class RobotPlayer {
                 MapLocation myLocation = rc.getLocation();
                 rc.broadcast(0,(int)myLocation.x);
                 rc.broadcast(1,(int)myLocation.y);
-
-
-
 
 
                 if(rc.getTeamBullets() > 1000){
@@ -99,12 +137,16 @@ public strictfp class RobotPlayer {
 
 	static void runGardener() throws GameActionException {
         System.out.println("I'm a gardener!");
-
+        rc.broadcast(GARDENER_COUNT_CHANNEL,rc.readBroadcast(GARDENER_COUNT_CHANNEL) + 1);
         // The code you want your robot to perform every round should be in this loop
         while (true) {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
+                checkForLeader(rc.getRoundNum(), rc.readBroadcast(LEADER_TRACKING_CHANNEL), 15);
+                if(AM_LEADER == true){
+                    LeaderCode();
+                }
 
                 // Listen for home archon's location
                 int xPos = rc.readBroadcast(0);
@@ -118,11 +160,11 @@ public strictfp class RobotPlayer {
                 if(Direction_to_move == null){
                     boolean direction_found = false;
                     Direction_to_move = randomDirection();
-                    System.out.println(rc.getID() + "Can robot move: " + rc.canMove(Direction_to_move));
+                    //System.out.println(rc.getID() + "Can robot move: " + rc.canMove(Direction_to_move));
                     if (rc.canMove(Direction_to_move) == false){
-                        System.out.println(rc.getID() + " searching for a direction");
-                        for (float i = 0; i < 6.2; i = i + (float) 0.1) {
-                            Direction_to_move = Direction_to_move.rotateRightRads(i);
+                        //System.out.println(rc.getID() + " searching for a direction");
+                        for (float i = 0; i < 6.2; i = i + (float) 0.5) {
+                            Direction_to_move = Direction_to_move.rotateRightRads((float)0.5);
                             if (rc.canMove(Direction_to_move)){
                                 direction_found = true;
                                 break;
@@ -134,21 +176,42 @@ public strictfp class RobotPlayer {
                     if (direction_found == false){
                         //robot is penned in and cant move, stop it moving
                         Num_of_Moves = 999999999;
-                        System.out.println(rc.getID() + " couldn't find a direction to move");
+                        //System.out.println(rc.getID() + " couldn't find a direction to move");
                     }
                 }
 
 
                 if(Num_of_Moves < 25) {
 
-                    Num_of_Moves++;
                     if (rc.canMove(Direction_to_move)) {
                         rc.move(Direction_to_move);
+                        Num_of_Moves++;
                     }else{
                         Num_of_Moves = 999999999;
                     }
 
                 }else {
+                    int guardeners = rc.readBroadcast(GARDENER_COUNT_CHANNEL);
+                    int halfguard = guardeners/2;
+                    int lumbers = rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL);
+
+                    System.out.println("halfguard:" + halfguard);
+                    System.out.println("lumbers:" + lumbers);
+
+                    if( halfguard > lumbers){
+                        if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                            for (float i = 0; i < 6.2; i = i + (float) 0.2) {
+                                Direction TempDir = new Direction(i);
+                                if (rc.canBuildRobot(RobotType.LUMBERJACK, TempDir)) {
+                                    rc.buildRobot(RobotType.LUMBERJACK, TempDir);
+
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+
                     TreeInfo[] trees = rc.senseNearbyTrees((float)1.5,rc.getTeam());
                     if (trees.length < 5) {
                         if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
@@ -278,7 +341,7 @@ public strictfp class RobotPlayer {
     static void runLumberjack() throws GameActionException {
         System.out.println("I'm a lumberjack!");
         Team enemy = rc.getTeam().opponent();
-
+        rc.broadcast(LUMBERJACK_COUNT_CHANNEL,rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL) + 1);
         // The code you want your robot to perform every round should be in this loop
         while (true) {
 
