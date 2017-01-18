@@ -16,6 +16,7 @@ public strictfp class RobotPlayer {
     static int LEADER_TRACKING_CHANNEL = 3;
     static int GARDENER_COUNT_CHANNEL = 4;
     static int LUMBERJACK_COUNT_CHANNEL = 5;
+    static int SHOULD_START_HARVESTING = 6;
 
     //variables
     static boolean AM_LEADER = false;
@@ -50,6 +51,9 @@ public strictfp class RobotPlayer {
             case SCOUT:
                 runScout();
                 break;
+            case TANK:
+                runTank();
+                break;
         }
 	}
 
@@ -70,13 +74,16 @@ public strictfp class RobotPlayer {
 
     static void LeaderCode() throws GameActionException {
 
-        //System.out.println("num guard:" + rc.readBroadcast(GARDENER_COUNT_CHANNEL));
-        //System.out.println("num Jack:" + rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL));
-
-        //rc.broadcast(GARDENER_COUNT_CHANNEL,0);
-        //rc.broadcast(LUMBERJACK_COUNT_CHANNEL,0);
-
-
+        TreeInfo[] trees = rc.senseNearbyTrees();
+        int count = 0;
+        for (TreeInfo t : trees) {
+            if(!t.getTeam().isPlayer()){
+                count++;
+            }
+        }
+        if(count < 5){
+            rc.broadcast(SHOULD_START_HARVESTING,1);
+        }
     }
 
 
@@ -147,21 +154,11 @@ public strictfp class RobotPlayer {
                     LeaderCode();
                 }
 
-                // Listen for home archon's location
-                int xPos = rc.readBroadcast(0);
-                int yPos = rc.readBroadcast(1);
-                MapLocation archonLoc = new MapLocation(xPos,yPos);
-
-                // Generate a random direction
-                //Direction dir = randomDirection();
-                //int moves = rc.readBroadcast(rc.getID());
-
                 if(Direction_to_move == null){
                     boolean direction_found = false;
                     Direction_to_move = randomDirection();
-                    //System.out.println(rc.getID() + "Can robot move: " + rc.canMove(Direction_to_move));
                     if (rc.canMove(Direction_to_move) == false){
-                        //System.out.println(rc.getID() + " searching for a direction");
+
                         for (float i = 0; i < 6.2; i = i + (float) 0.5) {
                             Direction_to_move = Direction_to_move.rotateRightRads((float)0.5);
                             if (rc.canMove(Direction_to_move)){
@@ -175,7 +172,6 @@ public strictfp class RobotPlayer {
                     if (direction_found == false){
                         //robot is penned in and cant move, stop it moving
                         Num_of_Moves = 999999999;
-                        //System.out.println(rc.getID() + " couldn't find a direction to move");
                     }
                 }
 
@@ -190,107 +186,24 @@ public strictfp class RobotPlayer {
                     }
 
                 }else {
-                    int guardeners = rc.readBroadcast(GARDENER_COUNT_CHANNEL);
-                    int halfguard = guardeners/2;
-                    int lumbers = rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL);
+                    if (rc.readBroadcast(SHOULD_START_HARVESTING) == 1) {
 
-                    System.out.println("halfguard:" + halfguard);
-                    System.out.println("lumbers:" + lumbers);
+                        HarvestMode();
 
-                    if( halfguard > lumbers){
+                    } else {
+
                         if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
                             for (float i = 0; i < 6.2; i = i + (float) 0.2) {
                                 Direction TempDir = new Direction(i);
                                 if (rc.canBuildRobot(RobotType.LUMBERJACK, TempDir)) {
                                     rc.buildRobot(RobotType.LUMBERJACK, TempDir);
-
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-
-                    TreeInfo[] trees = rc.senseNearbyTrees((float)1.5,rc.getTeam());
-                    if (trees.length < 5) {
-                        if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
-                            for (float i = 0; i < 6.2; i = i + (float) 0.2) {
-                                Direction TempDir = new Direction(i);
-                                if (rc.canPlantTree(TempDir)) {
-                                    rc.plantTree(TempDir);
                                     break;
                                 }
                             }
                         }
 
-
-                        //Direction E = new Direction(0);
-                        //Direction SE = new Direction((float) 0.785398);
-                        //Direction S = new Direction((float) 1.5708);
-                        //Direction SW = new Direction((float) 2.35619);
-                        //Direction W = new Direction((float) 3.14159);
-                        //Direction NW = new Direction((float) 3.92699);
-                        //Direction N = new Direction((float) 4.71239);
-                        //Direction NE = new Direction((float) 5.49779);
-
-                        //Direction NE = Direction( E.getDeltaX(1), N.getDeltaY(1) );
-
-                        //if you can plant a tree plant one
-                        //if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
-                        //    if (rc.canPlantTree(E)) {
-                        //        rc.plantTree(E);
-                        //    } else if (rc.canPlantTree(SE)) {
-                        //        rc.plantTree(SE);
-                        //    } else if (rc.canPlantTree(S)) {
-                        //        rc.plantTree(S);
-                        //    } else if (rc.canPlantTree(SW)) {
-                        //        rc.plantTree(SW);
-                        //    } else if (rc.canPlantTree(W)) {
-                        //        rc.plantTree(W);
-                        //    } else if (rc.canPlantTree(NW)) {
-                        //        rc.plantTree(NW);
-                        //    } else if (rc.canPlantTree(N)) {
-                        //        rc.plantTree(N);
-                        //    } else if (rc.canPlantTree(NE)) {
-                        //       rc.plantTree(NE);
-                        //   }
-                        //}
-                    }
-                    //water the lowest HP tree in range
-
-                    float LowestTreeHP = 50;
-                    TreeInfo TargetWaterTree = null;
-
-                    for (TreeInfo t : trees) {
-                        if (t.health < LowestTreeHP) {
-                            LowestTreeHP = t.health;
-                            TargetWaterTree = t;
-                        }
-                    }
-
-                    if (TargetWaterTree != null) {
-                        if (rc.canWater(TargetWaterTree.getID())) {
-                            rc.water(TargetWaterTree.getID());
-                        }
-                    }
-
-                    //look for trees to shake
-                    TreeInfo TargetShakeTree = null;
-                    int NumOfBull = 0;
-                    for (TreeInfo t : trees) {
-                        if (t.containedBullets > NumOfBull) {
-                            NumOfBull = t.containedBullets;
-                            TargetShakeTree = t;
-                        }
-                    }
-
-                    if (TargetShakeTree != null) {
-                        if (rc.canShake(TargetShakeTree.getID())) {
-                            rc.shake(TargetShakeTree.getID());
-                        }
                     }
                 }
-
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
 
@@ -298,6 +211,77 @@ public strictfp class RobotPlayer {
                 System.out.println("Gardener Exception");
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void HarvestMode() throws GameActionException {
+        try {
+            int guardeners = rc.readBroadcast(GARDENER_COUNT_CHANNEL);
+            int halfguard = guardeners/2;
+            int lumbers = rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL);
+
+            if( halfguard > lumbers){
+                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                    for (float i = 0; i < 6.2; i = i + (float) 0.2) {
+                        Direction TempDir = new Direction(i);
+                        if (rc.canBuildRobot(RobotType.LUMBERJACK, TempDir)) {
+                            rc.buildRobot(RobotType.LUMBERJACK, TempDir);
+
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+            TreeInfo[] trees = rc.senseNearbyTrees((float)1.5,rc.getTeam());
+            if (trees.length < 5) {
+                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                    for (float i = 0; i < 6.2; i = i + (float) 0.2) {
+                        Direction TempDir = new Direction(i);
+                        if (rc.canPlantTree(TempDir)) {
+                            rc.plantTree(TempDir);
+                            break;
+                        }
+                    }
+                }
+
+            }
+            //water the lowest HP tree in range
+
+            float LowestTreeHP = 50;
+            TreeInfo TargetWaterTree = null;
+
+            for (TreeInfo t : trees) {
+                if (t.health < LowestTreeHP) {
+                    LowestTreeHP = t.health;
+                    TargetWaterTree = t;
+                }
+            }
+
+            if (TargetWaterTree != null) {
+                if (rc.canWater(TargetWaterTree.getID())) {
+                    rc.water(TargetWaterTree.getID());
+                }
+            }
+
+            //look for trees to shake
+            TreeInfo TargetShakeTree = null;
+            int NumOfBull = 0;
+            for (TreeInfo t : trees) {
+                if (t.containedBullets > NumOfBull) {
+                    NumOfBull = t.containedBullets;
+                    TargetShakeTree = t;
+                }
+            }
+
+            if (TargetShakeTree != null) {
+                if (rc.canShake(TargetShakeTree.getID())) {
+                    rc.shake(TargetShakeTree.getID());
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -434,58 +418,71 @@ public strictfp class RobotPlayer {
         Team enemy = rc.getTeam().opponent();
 
         // The code you want your robot to perform every round should be in this loop
-        while (true)
+        while (true) {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
-
-                //check for nearby trees and attempt to chop them down. ~Movian
-
-                TreeInfo[] Trees = rc.senseNearbyTrees();
                 MapLocation myLocation = rc.getLocation();
 
-                if (Trees.length > 0){
-                    MapLocation TreeLocation = Trees[0].getLocation();
-
-                    //Tree contains a robot check if tree in range to shake.
-                    for (int i = 0; i < Trees.length; i++) {
-                        if (rc.canShake(Trees[i].getID())) {
-                            rc.shake(Trees[i].getID());
-                        }
-                    }
-
-                    Direction toTree = myLocation.directionTo(TreeLocation);
-                    tryMove(toTree);
-
-
-                }
-
-
-
-                //Tree is not in range, move towards tree
-
-                RobotInfo[] robots2 = rc.senseNearbyRobots(-1, enemy);
+                // See if there are any nearby enemy robots
+                RobotInfo[] robots = rc.senseNearbyRobots(-1, enemy);
 
                 // If there are some...
-                if (robots2.length > 0) {
+                if (robots.length > 0) {
                     // And we have enough bullets, and haven't attacked yet this turn...
                     if (rc.canFireSingleShot()) {
                         // ...Then fire a bullet in the direction of the enemy.
-                        rc.fireSingleShot(rc.getLocation().directionTo(robots2[0].location));
+                        rc.fireSingleShot(rc.getLocation().directionTo(robots[0].location));
                     }
                 }
+
+                // Move randomly
+                tryMove(randomDirection());
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
 
-
-
-            }
-            catch (Exception e){
-                System.out.println("scout Exception");
+            } catch (Exception e) {
+                System.out.println("Scout Exception");
                 e.printStackTrace();
             }
+        }
+    }
 
+    static void runTank() throws GameActionException {
+        System.out.println("I'm an tank!");
+        Team enemy = rc.getTeam().opponent();
+
+        // The code you want your robot to perform every round should be in this loop
+        while (true) {
+
+            // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
+            try {
+                MapLocation myLocation = rc.getLocation();
+
+                // See if there are any nearby enemy robots
+                RobotInfo[] robots = rc.senseNearbyRobots(-1, enemy);
+
+                // If there are some...
+                if (robots.length > 0) {
+                    // And we have enough bullets, and haven't attacked yet this turn...
+                    if (rc.canFireSingleShot()) {
+                        // ...Then fire a bullet in the direction of the enemy.
+                        rc.fireSingleShot(rc.getLocation().directionTo(robots[0].location));
+                    }
+                }
+
+                // Move randomly
+                tryMove(randomDirection());
+
+                // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
+                Clock.yield();
+
+            } catch (Exception e) {
+                System.out.println("Tank Exception");
+                e.printStackTrace();
+            }
+        }
     }
 
 
