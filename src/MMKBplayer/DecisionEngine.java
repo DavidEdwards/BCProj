@@ -36,6 +36,7 @@ public class DecisionEngine {
     Build, Dodge, Combat, Shake, Chop, Plant, Water, Lure
 }
 
+    //Sub that sets up array of base weights depending on robot type.
     static void BaseLineArray(RobotType Rtype)
     {
         switch (Rtype)
@@ -66,7 +67,7 @@ public class DecisionEngine {
         try {
             BaseLineArray(rc.getType());
 
-            //Process Bullets (Same for all bots)
+            //Process each task for weighting
             WeightDodge(Bullets);
             WeightCombat(Robots);
             WeightTreeShake(Trees);
@@ -75,7 +76,7 @@ public class DecisionEngine {
             if(rc.getType() == RobotType.SCOUT){WeightLure(rc); }
             if(rc.getType() == RobotType.GARDENER || rc.getType() == RobotType.ARCHON ){WeightBuild(rc); }
 
-            //Check final numbers from decision engine
+            //Check final numbers from decision engine and return task with the highest weight
             int Decision = 0;
             int weight = 0;
             for (int i = 0; i < WorkingWeights.length;i++)

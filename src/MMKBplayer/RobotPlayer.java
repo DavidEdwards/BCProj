@@ -22,6 +22,7 @@ public strictfp class RobotPlayer {
         TreeInfo[] Tress = rc.senseNearbyTrees();
         RobotInfo[] Robots = rc.senseNearbyRobots();
 
+        //Call General robot start passing info on bullets trees and robots
         RunRobot(Bullets, Tress, Robots);
 
 	}
@@ -35,9 +36,13 @@ public strictfp class RobotPlayer {
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
 
+                //Set variable Currenttask to a task decided by the decision engine.
                 DecisionEngine.RobotTaskList CurrentTask = DecisionEngine.GetTaskDecision(rc, Bullets, Trees, Robots);
+                //perform task selected by decision engine
                 Tasks.PerformTask(rc, CurrentTask, Bullets, Trees, Robots);
 
+
+                //track previous task
                 if (CurrentTask != PreviousTask){System.out.println(CurrentTask.toString());}
                 PreviousTask = CurrentTask;
 

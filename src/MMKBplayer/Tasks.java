@@ -18,6 +18,7 @@ public class Tasks {
 
     static void PerformTask( RobotController rc, DecisionEngine.RobotTaskList RobotTask,  BulletInfo[] Bullets, TreeInfo[] Trees, RobotInfo[] Robots)throws GameActionException
     {
+        //main routine for calling tasks
         switch (RobotTask)
         {
             case Dodge:
@@ -35,7 +36,7 @@ public class Tasks {
     }
 
     static void DodgeBullet(RobotController rc, BulletInfo bi) throws GameActionException {
-
+        //while there are bullets still on track to hit robot attempt to sidestep
         while (SharedSubs.willCollideWithMe(rc, bi)) {
             SharedSubs.trySidestep(rc, bi);
         }
