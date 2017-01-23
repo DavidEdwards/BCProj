@@ -87,6 +87,20 @@ public strictfp class RobotPlayer {
         if(count < 5){
             rc.broadcast(SHOULD_START_HARVESTING,1);
         }
+
+
+        //Victory point code
+        float bulls = rc.getTeamBullets();
+        int vp = rc.getTeamVictoryPoints();
+        if((bulls/10) + vp > 1000){
+            rc.donate(bulls);
+        }
+
+        if(rc.getTeamBullets() > 1000){
+            rc.donate(500);
+        }
+
+
     }
 
 
@@ -105,11 +119,6 @@ public strictfp class RobotPlayer {
                     LeaderCode();
                 }
 
-                float bulls = rc.getTeamBullets();
-                int vp = rc.getTeamVictoryPoints();
-                if((bulls/10) + vp > 1000){
-                    rc.donate(bulls);
-                }
 
                 // Generate a random direction
                 Direction dir = randomDirection();
@@ -129,10 +138,6 @@ public strictfp class RobotPlayer {
                 rc.broadcast(0,(int)myLocation.x);
                 rc.broadcast(1,(int)myLocation.y);
 
-
-                if(rc.getTeamBullets() > 1000){
-                    rc.donate(500);
-                }
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
