@@ -25,6 +25,9 @@ public strictfp class RobotPlayer {
     static int Num_of_Moves = 0;
     static Direction Direction_to_move = null;
 
+
+
+
     //public enum rcstate{none, chop, shake}
 
     public static void run(RobotController rc) throws GameActionException {
@@ -426,6 +429,16 @@ public strictfp class RobotPlayer {
 
                 // See if there are any nearby enemy robots
                 RobotInfo[] robots = rc.senseNearbyRobots(-1, enemy);
+
+                //prioritys:
+                //1: enemy gardner or scout in range, kill it
+
+
+                //2: enemy archon in range orbit it:
+                //3: tree with bullets in range shake it
+                //4: head toward enemy archon starting location(search mode)
+
+
 
                 // If there are some...
                 if (robots.length > 0) {
