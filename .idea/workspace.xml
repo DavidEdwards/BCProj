@@ -97,10 +97,11 @@
       <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="106" column="55" lean-forward="false" selection-start-line="106" selection-start-column="55" selection-end-line="106" selection-end-column="55" />
+            <state relative-caret-position="1009">
+              <caret line="561" column="0" lean-forward="false" selection-start-line="561" selection-start-column="0" selection-end-line="561" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -108,6 +109,7 @@
                 <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+                <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -116,8 +118,18 @@
       <file leaf-file-name="DecisionEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="36" selection-end-column="1" />
+            <state relative-caret-position="-653">
+              <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/MyFirstRobo/RobotPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="215" column="32" lean-forward="true" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -130,6 +142,7 @@
       <find>for</find>
       <find>GARDENER_COUNT_CHANNEL</find>
       <find>enum</find>
+      <find>RobotTaskList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -580,6 +593,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyFirstRobo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -597,6 +614,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="MMKBplayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BCProj-New" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BCProj-New" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1094,12 +1125,19 @@
       <option name="project" value="LOCAL" />
       <updated>1485211311687</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="checked build workds and created MMKBplayer base under src (Our player)&#10;and confirmed that the player can be loaded into the client.&#10;&#10;Changes to our player should be done there and examplefuncsplayer should be left alone as an example and easy test oponent.">
+      <created>1485211443741</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1485211443741</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1107,12 +1145,12 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27906978" sideWeight="0.50625" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44397464" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25158563" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27906978" sideWeight="0.49583334" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27906978" sideWeight="0.49375" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2015625" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -1158,7 +1196,17 @@
     <option name="LAST_COMMIT_MESSAGE" value="checked build workds and created MMKBplayer base under src (Our player)&#10;and confirmed that the player can be loaded into the client.&#10;&#10;Changes to our player should be done there and examplefuncsplayer should be left alone as an example and easy test oponent." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java</url>
+          <line>44</line>
+          <properties />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1188,6 +1236,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1195,6 +1244,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1213,6 +1263,7 @@
           <caret line="16" column="36" lean-forward="false" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1220,6 +1271,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1272,6 +1324,7 @@
           <caret line="16" column="36" lean-forward="true" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1279,6 +1332,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1331,6 +1385,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1338,6 +1393,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1364,6 +1420,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1371,6 +1428,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1389,6 +1447,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1396,6 +1455,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1414,6 +1474,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1421,6 +1482,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1522,18 +1584,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="36" selection-end-column="1" />
+        <state relative-caret-position="-653">
+          <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyFirstRobo/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="215" column="32" lean-forward="true" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="106" column="55" lean-forward="false" selection-start-line="106" selection-start-column="55" selection-end-line="106" selection-end-column="55" />
+        <state relative-caret-position="1009">
+          <caret line="561" column="0" lean-forward="false" selection-start-line="561" selection-start-column="0" selection-end-line="561" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
@@ -1541,6 +1612,7 @@
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>

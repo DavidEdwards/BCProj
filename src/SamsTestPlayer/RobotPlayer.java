@@ -1,6 +1,7 @@
 package SamsTestPlayer;
 import battlecode.common.*;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import scala.reflect.internal.Trees;
 
 public strictfp class RobotPlayer {
@@ -19,14 +20,18 @@ public strictfp class RobotPlayer {
     static int SHOULD_START_HARVESTING = 6;
 
     //variables
+    static MapLocation[] EnemyArchonStart = null;
+    static MapLocation TargetEnemyArchonStart = null;
+
     static boolean AM_LEADER = false;
     static int LEADER_TURNS = 0;
     static int GARDENER_MAX = 100;
     static int Num_of_Moves = 0;
     static Direction Direction_to_move = null;
 
-
-
+    public enum ScoutTaskList{
+        KillScout, KillGardener, Orbit, Shake, Search, None
+    }
 
     //public enum rcstate{none, chop, shake}
 
@@ -103,7 +108,6 @@ public strictfp class RobotPlayer {
 
     }
 
-
     static void runArchon() throws GameActionException {
         System.out.println("I'm an archon!");
         Direction Archondir = Direction.getNorth();
@@ -160,6 +164,16 @@ public strictfp class RobotPlayer {
                 checkForLeader(rc.getRoundNum(), rc.readBroadcast(LEADER_TRACKING_CHANNEL), 15);
                 if(AM_LEADER == true){
                     LeaderCode();
+                }
+
+                if(Num_of_Moves == 0){
+                    for (float i = 0; i < 6.2; i = i + (float) 0.2) {
+                        Direction TempDir = new Direction(i);
+                        if (rc.canBuildRobot(RobotType.SCOUT, TempDir)) {
+                            rc.buildRobot(RobotType.SCOUT, TempDir);
+                            break;
+                        }
+                    }
                 }
 
                 if(Direction_to_move == null){
@@ -424,38 +438,149 @@ public strictfp class RobotPlayer {
     static void runScout() throws GameActionException {
         System.out.println("I'm an scout!");
         Team enemy = rc.getTeam().opponent();
+        EnemyArchonStart = rc.getInitialArchonLocations(enemy); //TargetEnemyArchonStart
+        if(EnemyArchonStart.length == 1){
+            TargetEnemyArchonStart = EnemyArchonStart[0];
+        }else{
+            //int randomNum = ThreadLocalRandom.current().nextInt(0, EnemyArchonStart.length);
+            int randomNum = 0 ;
+            TargetEnemyArchonStart = EnemyArchonStart[randomNum];
+        }
+
 
         // The code you want your robot to perform every round should be in this loop
         while (true) {
 
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
+
+                ScoutTaskList RobotTask = ScoutTaskList.None; //no task picked yet this turn
+
                 MapLocation myLocation = rc.getLocation();
 
                 // See if there are any nearby enemy robots
                 RobotInfo[] robots = rc.senseNearbyRobots(-1, enemy);
 
+                TreeInfo[] trees = rc.senseNearbyTrees();
+
+                RobotInfo TargetRobot = null;
+                RobotInfo ENEMY_ARCHON = null;
+
+                TreeInfo TargetShakeTree = null;
+
+                int NUM_OF_ENEMY_ARCHON = 0;
+                int NUM_OF_ENEMY_GARDENER = 0;
+                int NUM_OF_ENEMY_SOLDIER = 0;
+                int NUM_OF_ENEMY_LUMBERJACK = 0;
+                int NUM_OF_ENEMY_SCOUT = 0;
+                int NUM_OF_ENEMY_TANK = 0;
+
+
+
                 //prioritys:
                 //1: enemy gardner or scout in range, kill it
+                for (RobotInfo r : robots) {
+                    switch (r.getType()) {
+                        case ARCHON:
+                            //broadcast archon location
+                            NUM_OF_ENEMY_ARCHON++;
+                            ENEMY_ARCHON = r;
+                            break;
+                        case GARDENER:
+                            NUM_OF_ENEMY_GARDENER++;
+                            if(RobotTask == ScoutTaskList.None){
+                                RobotTask = ScoutTaskList.KillGardener;
+                                TargetRobot = r;
+                            }
+                            break;
+                        case SOLDIER:
+                            NUM_OF_ENEMY_SOLDIER++;
+                            break;
+                        case LUMBERJACK:
+                            NUM_OF_ENEMY_LUMBERJACK++;
+                            break;
+                        case SCOUT:
+                            NUM_OF_ENEMY_SCOUT++;
+                            if (NUM_OF_ENEMY_SCOUT == 1) {
+                                RobotTask = ScoutTaskList.KillScout;
+                                TargetRobot = r;
+                            }
+                            break;
+                        case TANK:
+                            NUM_OF_ENEMY_TANK++;
+                            break;
+                    }
 
+                }
 
                 //2: enemy archon in range orbit it:
-                //3: tree with bullets in range shake it
-                //4: head toward enemy archon starting location(search mode)
-
-
-
-                // If there are some...
-                if (robots.length > 0) {
-                    // And we have enough bullets, and haven't attacked yet this turn...
-                    if (rc.canFireSingleShot()) {
-                        // ...Then fire a bullet in the direction of the enemy.
-                        rc.fireSingleShot(rc.getLocation().directionTo(robots[0].location));
+                if(RobotTask == ScoutTaskList.None){
+                    if(ENEMY_ARCHON != null){
+                        //RobotTask = ScoutTaskList.Orbit;
                     }
                 }
 
-                // Move randomly
-                tryMove(randomDirection());
+                //3: tree with bullets in range shake it
+                if(RobotTask == ScoutTaskList.None){
+                    //look for trees to shake
+                    for (TreeInfo t : trees) {
+                        if (t.containedBullets > 0) {
+                            TargetShakeTree = t;
+                            RobotTask = ScoutTaskList.Shake;
+                            break;
+                        }
+                    }
+
+
+                }
+
+                //4: head toward enemy archon starting location(search mode)
+                if(RobotTask == ScoutTaskList.None){
+                    RobotTask = ScoutTaskList.Search;
+                }
+
+                switch (RobotTask) {
+                    case Search:
+                        System.out.println("Search");
+                        Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
+                        tryMove(toTarget);
+                        break;
+                    case Shake:
+                        System.out.println("Shake");
+                        if (TargetShakeTree != null) {
+                            if (rc.canShake(TargetShakeTree.getID())) {
+                                rc.shake(TargetShakeTree.getID());
+                            }else{
+                                //move toward tree
+                                Direction toTree = myLocation.directionTo(TargetShakeTree.getLocation());
+                                tryMove(toTree);
+                            }
+                        }
+                        break;
+                    case Orbit:
+                        System.out.println("Orbit");
+
+                        break;
+                    case KillScout:
+                        System.out.println("KillScout");
+                        Direction ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
+                        tryMove(ToKillScout);
+                        if (rc.canFireSingleShot()) {
+                            // ...Then fire a bullet in the direction of the enemy.
+                            rc.fireSingleShot(ToKillScout);
+                        }
+                        break;
+                    case KillGardener:
+                        System.out.println("KillGardener");
+                        Direction ToKillGardener = myLocation.directionTo(TargetRobot.getLocation());
+                        tryMove(ToKillGardener);
+                        if (rc.canFireSingleShot()) {
+                            // ...Then fire a bullet in the direction of the enemy.
+                            rc.fireSingleShot(ToKillGardener);
+                        }
+                        break;
+                }
+
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
