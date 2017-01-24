@@ -1,8 +1,6 @@
 package SamsTestPlayer;
 import battlecode.common.*;
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import scala.reflect.internal.Trees;
 
 public strictfp class RobotPlayer {
     static RobotController rc;

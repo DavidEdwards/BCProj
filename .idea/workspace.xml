@@ -97,8 +97,8 @@
       <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="784" column="0" lean-forward="true" selection-start-line="784" selection-start-column="0" selection-end-line="784" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
@@ -118,8 +118,8 @@
                 <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
                 <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-                <element signature="e#29844#29845#0" expanded="true" />
-                <element signature="e#29902#29903#0" expanded="true" />
+                <element signature="e#29760#29761#0" expanded="true" />
+                <element signature="e#29818#29819#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -979,7 +979,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485274399545</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="checked build workds and created MMKBplayer base under src (Our player)&#10;and confirmed that the player can be loaded into the client.&#10;&#10;Changes to our player should be done there and examplefuncsplayer should be left alone as an example and easy test oponent.">
+      <created>1485280048784</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1485280048784</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1047,7 +1054,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java</url>
-          <line>47</line>
+          <line>45</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -1092,8 +1099,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1156,8 +1163,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1193,8 +1200,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1267,8 +1274,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1341,8 +1348,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1386,8 +1393,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1423,8 +1430,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1460,8 +1467,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1580,8 +1587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="784" column="0" lean-forward="true" selection-start-line="784" selection-start-column="0" selection-end-line="784" selection-end-column="0" />
+        <state relative-caret-position="289">
+          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
@@ -1601,8 +1608,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29844#29845#0" expanded="true" />
-            <element signature="e#29902#29903#0" expanded="true" />
+            <element signature="e#29760#29761#0" expanded="true" />
+            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
