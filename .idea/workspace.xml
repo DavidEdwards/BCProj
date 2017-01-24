@@ -97,16 +97,19 @@
       <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="490" column="54" lean-forward="true" selection-start-line="490" selection-start-column="54" selection-end-line="490" selection-end-column="54" />
+            <state relative-caret-position="373">
+              <caret line="784" column="0" lean-forward="true" selection-start-line="784" selection-start-column="0" selection-end-line="784" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+                <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+                <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+                <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -115,6 +118,8 @@
                 <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
                 <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+                <element signature="e#29844#29845#0" expanded="true" />
+                <element signature="e#29902#29903#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -967,7 +972,14 @@
       <option name="project" value="LOCAL" />
       <updated>1485219669302</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="checked build workds and created MMKBplayer base under src (Our player)&#10;and confirmed that the player can be loaded into the client.&#10;&#10;Changes to our player should be done there and examplefuncsplayer should be left alone as an example and easy test oponent.">
+      <created>1485274399545</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1485274399545</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1039,12 +1051,6 @@
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java</url>
-          <line>671</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
       </breakpoints>
       <option name="time" value="4" />
     </breakpoint-manager>
@@ -1072,9 +1078,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1083,6 +1092,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1131,9 +1142,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1142,6 +1156,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1163,9 +1179,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1174,6 +1193,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1232,9 +1253,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1243,6 +1267,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1301,9 +1327,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1312,6 +1341,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1341,9 +1372,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1352,6 +1386,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1373,9 +1409,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1384,6 +1423,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1405,9 +1446,12 @@
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1416,6 +1460,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1534,16 +1580,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="490" column="54" lean-forward="true" selection-start-line="490" selection-start-column="54" selection-end-line="490" selection-end-column="54" />
+        <state relative-caret-position="373">
+          <caret line="784" column="0" lean-forward="true" selection-start-line="784" selection-start-column="0" selection-end-line="784" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
@@ -1552,6 +1601,8 @@
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="e#29844#29845#0" expanded="true" />
+            <element signature="e#29902#29903#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -545,7 +545,8 @@ public strictfp class RobotPlayer {
                     case Search:
                         System.out.println("Search");
                         Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
-                        tryMove(toTarget);
+                        antiGravMove(toTarget)
+                        //tryMove(toTarget);
                         break;
                     case Shake:
                         System.out.println("Shake");
@@ -756,4 +757,49 @@ public strictfp class RobotPlayer {
 
         return (perpendicularDist <= rc.getType().bodyRadius);
     }
-}
+
+    void antiGravMove(Direction ToTarget) {
+        double xforce = 0;
+        double yforce = 0;
+        double force;
+        Direction ang;
+
+        RobotInfo[] robots = rc.senseNearbyRobots();
+
+        for (RobotInfo r : robots) {
+            float power = 1;
+
+            //Calculate the total force from this point on us
+            force = power/Math.pow(getRange(r.getLocation()),2);
+            System.out.println("force: " + force);
+
+            //Find the bearing from the point to us
+            ang = rc.getLocation().directionTo(r.getLocation());
+
+            //Add the components of this force to the total force in their
+            //respective directions
+            xforce += Math.sin(ang.radians) * force;
+            yforce += Math.cos(ang.radians) * force;
+
+        }
+
+        //Move in the direction of our resolved force.
+        goTo(getX()-xforce,getY()-yforce);
+    }
+
+    /**Move in the direction of an x and y coordinate**/
+    void goTo(double x, double y) {
+        //double dist = 20;
+        //double angle = Math.toDegrees(absbearing(getX(),getY(),x,y));
+    }
+
+
+    float getRange(MapLocation Target) {
+        return rc.getLocation().distanceTo(Target);
+    }
+
+    }
+
+
+
+
