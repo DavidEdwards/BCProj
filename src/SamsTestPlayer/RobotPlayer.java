@@ -19,6 +19,9 @@ public strictfp class RobotPlayer {
     static int LUMBERJACK_COUNT_CHANNEL = 5;
     static int SHOULD_START_HARVESTING = 6;
 
+    //will use channels upto ENEMY_ARCHON_LOG_START + 20
+    static int ENEMY_ARCHON_LOG_START = 500;
+
     //variables
     static MapLocation[] EnemyArchonStart = null;
     static MapLocation TargetEnemyArchonStart = null;
@@ -485,6 +488,7 @@ public strictfp class RobotPlayer {
                             //broadcast archon location
                             NUM_OF_ENEMY_ARCHON++;
                             ENEMY_ARCHON = r;
+                            LogEnemyArchonLocation(r);
                             break;
                         case GARDENER:
                             NUM_OF_ENEMY_GARDENER++;
@@ -530,8 +534,6 @@ public strictfp class RobotPlayer {
                             break;
                         }
                     }
-
-
                 }
 
                 //4: head toward enemy archon starting location(search mode)
@@ -591,6 +593,26 @@ public strictfp class RobotPlayer {
             }
         }
     }
+
+    public static void LogEnemyArchonLocation(RobotInfo robot) throws GameActionException {
+        try {
+            for (int i = ENEMY_ARCHON_LOG_START; i < ENEMY_ARCHON_LOG_START + 20; i = i + 3) {
+                if (rc.readBroadcast(i) == 0) {
+                    rc.broadcast(i, robot.getID());
+                    rc.broadcast(i + 1, (int) robot.getLocation().x);
+                    rc.broadcast(i + 2, (int) robot.getLocation().y);
+                    break;
+                } else if (rc.readBroadcast(i) == robot.getID()) {
+                    rc.broadcast(i + 1, (int) robot.getLocation().x);
+                    rc.broadcast(i + 2, (int) robot.getLocation().y);
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     static void runTank() throws GameActionException {
         System.out.println("I'm an tank!");
