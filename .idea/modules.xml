@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj-New.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj-New.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj-New_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj-New_main.iml" group="BCProj-New" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj-New_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj-New_test.iml" group="BCProj-New" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_main.iml" group="BCProj" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_main.iml" group="BCProj" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_test.iml" group="BCProj" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BCProj_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BCProj_test.iml" group="BCProj" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BattleCode2017.iml" filepath="$PROJECT_DIR$/.idea/modules/BattleCode2017.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BattleCode2017_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BattleCode2017_main.iml" group="BattleCode2017" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BattleCode2017_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BattleCode2017_test.iml" group="BattleCode2017" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BC2017.iml" filepath="$PROJECT_DIR$/.idea/modules/BC2017.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BC2017_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BC2017_main.iml" group="BC2017" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BC2017_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BC2017_test.iml" group="BC2017" />
     </modules>
   </component>
 </project>

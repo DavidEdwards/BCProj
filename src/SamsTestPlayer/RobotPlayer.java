@@ -541,9 +541,9 @@ public strictfp class RobotPlayer {
 
                 switch (RobotTask) {
                     case Search:
-                        System.out.println("Search");
-                        Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
-                        antiGravMove(toTarget)
+                        //System.out.println("Search");
+                        //Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
+                        rc.move(antiGravMove(TargetEnemyArchonStart));
                         //tryMove(toTarget);
                         break;
                     case Shake:
@@ -756,9 +756,9 @@ public strictfp class RobotPlayer {
         return (perpendicularDist <= rc.getType().bodyRadius);
     }
 
-    void antiGravMove(Direction ToTarget) {
-        double xforce = 0;
-        double yforce = 0;
+    static Direction antiGravMove(MapLocation Target) {
+        float xforce = 0;
+        float yforce = 0;
         double force;
         Direction ang;
 
@@ -780,9 +780,12 @@ public strictfp class RobotPlayer {
             yforce += Math.cos(ang.radians) * force;
 
         }
+        float NewX = Target.x - xforce;
+        float NewY = Target.y - yforce;
 
+        return new Direction(NewX, NewY);
         //Move in the direction of our resolved force.
-        goTo(getX()-xforce,getY()-yforce);
+        //goTo(getX()-xforce, getY()-yforce);
     }
 
     /**Move in the direction of an x and y coordinate**/
@@ -792,7 +795,7 @@ public strictfp class RobotPlayer {
     }
 
 
-    float getRange(MapLocation Target) {
+    static float getRange(MapLocation Target) {
         return rc.getLocation().distanceTo(Target);
     }
 
