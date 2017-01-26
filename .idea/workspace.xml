@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03365bc2-66ac-4c4b-a663-df82d6c66905" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gradlew" afterPath="$PROJECT_DIR$/gradlew" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -41,40 +45,8 @@
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
               </PATH_ELEMENT>
               <PATH_ELEMENT>
-                <option name="myItemId" value="BCProj-New" />
+                <option name="myItemId" value="BCProj" />
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="BCProj-New" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Tasks" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
-              </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="BCProj-New" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Tasks" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="build" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
               </PATH_ELEMENT>
             </PATH>
           </tree_state>
@@ -87,7 +59,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="0">
               <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
@@ -97,8 +69,8 @@
       <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+            <state relative-caret-position="216">
+              <caret line="546" column="24" lean-forward="false" selection-start-line="546" selection-start-column="24" selection-end-line="546" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
@@ -110,40 +82,15 @@
                 <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+                <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-                <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
                 <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
                 <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-                <element signature="e#29760#29761#0" expanded="true" />
-                <element signature="e#29818#29819#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DecisionEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
-              <folding>
-                <element signature="e#4145#4146#0" expanded="false" />
-                <element signature="e#4199#4200#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RobotPlayer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MyFirstRobo/RobotPlayer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="215" column="32" lean-forward="false" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -156,6 +103,8 @@
       <find>GARDENER_COUNT_CHANNEL</find>
       <find>enum</find>
       <find>RobotTaskList</find>
+      <find>wander</find>
+      <find>tryMove</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,14 +132,14 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="BCProj-New" />
+              <option name="name" value="BCProj" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value="BCProj-New" />
+                <option name="name" value="BCProj" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
             </list>
@@ -204,7 +153,7 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'BCProj-New'." />
+                <option name="description" value="Displays the sub-projects of root project 'BCProj'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
@@ -234,7 +183,7 @@
                 <option name="name" value="listPlayers" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'BCProj-New'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 'BCProj'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
@@ -244,7 +193,7 @@
                 <option name="name" value="processResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'BCProj-New'." />
+                <option name="description" value="Displays the tasks runnable from root project 'BCProj'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -269,7 +218,7 @@
                 <option name="name" value="check" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'BCProj-New'." />
+                <option name="description" value="Displays all dependencies declared in root project 'BCProj'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
@@ -294,12 +243,17 @@
                 <option name="name" value="buildNeeded" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
+                <option name="description" value="Downloads the 32-bit client." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="unpackClient32" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
                 <option name="description" value="Generates the Eclipse project file." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="eclipseProject" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'BCProj-New'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 'BCProj'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
@@ -323,12 +277,12 @@
                 <option name="name" value="classes" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the dependent components of components in root project 'BCProj-New'. [incubating]" />
+                <option name="description" value="Displays the dependent components of components in root project 'BCProj'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependentComponents" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'BCProj-New'." />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'BCProj'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
@@ -371,7 +325,7 @@
                 <option name="name" value="compileTestScala" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'BCProj-New'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'BCProj'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -411,9 +365,13 @@
                 <option name="name" value="jarForUpload" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'BCProj-New'." />
+                <option name="description" value="Displays the properties of root project 'BCProj'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="runFromClient" />
               </ExternalTaskPojo>
             </list>
           </value>
@@ -422,7 +380,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1484174869172" />
+        <entry key="$PROJECT_DIR$" value="1485282123815" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -437,7 +395,7 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.battlecode/battlecode-gradle-plugin/2017.0.0.1/be2a632b20215140698668c8928353f56d88978f/battlecode-gradle-plugin-2017.0.0.1.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.battlecode/battlecode-gradle-plugin/2017.0.0.6/2de1ddd57e24fa4e69485c987d081d63e3b292e3/battlecode-gradle-plugin-2017.0.0.6.jar" />
                           </list>
                         </option>
                         <option name="path" value="$PROJECT_DIR$" />
@@ -446,7 +404,7 @@
                   </entry>
                 </map>
               </option>
-              <option name="name" value="BCProj-New" />
+              <option name="name" value="BCProj" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.3-bin/64bhckfm0iuu9gap9hg3r7ev2/gradle-3.3/lib/ant-1.9.6.jar" />
@@ -542,8 +500,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -563,37 +520,55 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BCProj-New" />
+              <option name="myItemId" value="BCProj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BCProj-New" />
+              <option name="myItemId" value="BCProj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BCProj-New" />
+              <option name="myItemId" value="BCProj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="BCProj-New" />
+              <option name="myItemId" value="BCProj" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value=".idea" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BCProj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BCProj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="examplefuncsplayer" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -990,7 +965,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -999,16 +974,16 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27906978" sideWeight="0.5083333" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27906978" sideWeight="0.5125" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44397464" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25158563" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27906978" sideWeight="0.49166667" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27906978" sideWeight="0.4875" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2015625" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29791668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29791668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1054,7 +1029,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java</url>
-          <line>45</line>
+          <line>46</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -1091,16 +1066,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1109,10 +1082,109 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1241">
           <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyFirstRobo/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3655">
+          <caret line="215" column="32" lean-forward="false" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#4145#4146#0" expanded="false" />
-            <element signature="e#4199#4200#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MyFirstRobo/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3655">
+          <caret line="215" column="32" lean-forward="false" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1155,16 +1227,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1192,16 +1262,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1210,10 +1278,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4145#4146#0" expanded="false" />
-            <element signature="e#4199#4200#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1229,9 +1294,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-          <folding>
-            <marker date="1485211300678" expanded="true" signature="2186:2192" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1266,16 +1329,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1284,10 +1345,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#4145#4146#0" expanded="false" />
-            <element signature="e#4199#4200#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1303,8 +1361,49 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="850">
           <caret line="50" column="30" lean-forward="true" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/examplefuncsplayer/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1485211300678" expanded="true" signature="2186:2192" ph="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
+            <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1340,61 +1439,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/examplefuncsplayer/RobotPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#checkForLeader#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#LeaderCode#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#runArchon#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#runGardener#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#HarvestMode#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
-            <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1422,16 +1474,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1459,16 +1509,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1528,9 +1576,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="30" lean-forward="false" selection-start-line="31" selection-start-column="30" selection-end-line="31" selection-end-column="30" />
-          <folding>
-            <marker date="1485211300678" expanded="true" signature="2186:2192" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1542,17 +1588,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/examplefuncsplayer/RobotPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="91" column="61" lean-forward="false" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
+        <state relative-caret-position="0">
           <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
@@ -1568,27 +1606,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
+        <state relative-caret-position="594">
           <caret line="73" column="41" lean-forward="false" selection-start-line="73" selection-start-column="41" selection-end-line="73" selection-end-column="41" />
-          <folding>
-            <element signature="e#4145#4146#0" expanded="false" />
-            <element signature="e#4199#4200#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MyFirstRobo/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="215" column="32" lean-forward="false" selection-start-line="215" selection-start-column="32" selection-end-line="215" selection-end-column="32" />
+        <state relative-caret-position="199">
+          <caret line="194" column="27" lean-forward="false" selection-start-line="194" selection-start-column="27" selection-end-line="194" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/examplefuncsplayer/RobotPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1658">
+          <caret line="111" column="27" lean-forward="false" selection-start-line="111" selection-start-column="24" selection-end-line="111" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="43" lean-forward="true" selection-start-line="17" selection-start-column="43" selection-end-line="17" selection-end-column="43" />
+        <state relative-caret-position="216">
+          <caret line="546" column="24" lean-forward="false" selection-start-line="546" selection-start-column="24" selection-end-line="546" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#run#0;class#RobotPlayer#0" expanded="false" />
@@ -1600,16 +1643,14 @@
             <element signature="method#runSoldier#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runLumberjack#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#LogEnemyArchonLocation#0;class#RobotPlayer#0" expanded="false" />
+            <element signature="method#EnemyArchonLocations#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#runTank#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="method#wander#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#0;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="method#tryMove#1;class#RobotPlayer#0" expanded="false" />
             <element signature="docComment;method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
             <element signature="method#willCollideWithMe#0;class#RobotPlayer#0" expanded="false" />
-            <element signature="e#29760#29761#0" expanded="true" />
-            <element signature="e#29818#29819#0" expanded="true" />
           </folding>
         </state>
       </provider>

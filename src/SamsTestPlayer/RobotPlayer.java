@@ -23,6 +23,7 @@ public strictfp class RobotPlayer {
     //variables
     static MapLocation[] EnemyArchonStart = null;
     static MapLocation TargetEnemyArchonStart = null;
+    static MapLocation MY_LAST_LOCATION = null;
 
     static boolean AM_LEADER = false;
     static int LEADER_TURNS = 0;
@@ -443,8 +444,7 @@ public strictfp class RobotPlayer {
         if(EnemyArchonStart.length == 1){
             TargetEnemyArchonStart = EnemyArchonStart[0];
         }else{
-            //int randomNum = ThreadLocalRandom.current().nextInt(0, EnemyArchonStart.length);
-            int randomNum = 0 ;
+            int randomNum = myRand.nextInt(EnemyArchonStart.length - 1);
             TargetEnemyArchonStart = EnemyArchonStart[randomNum];
         }
 
@@ -518,7 +518,7 @@ public strictfp class RobotPlayer {
                 //2: enemy archon in range orbit it:
                 if(RobotTask == ScoutTaskList.None){
                     if(ENEMY_ARCHON != null){
-                        //RobotTask = ScoutTaskList.Orbit;
+                        RobotTask = ScoutTaskList.Orbit;
                     }
                 }
 
@@ -541,10 +541,25 @@ public strictfp class RobotPlayer {
 
                 switch (RobotTask) {
                     case Search:
-                        //System.out.println("Search");
-                        //Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
-                        rc.move(antiGravMove(TargetEnemyArchonStart));
-                        //tryMove(toTarget);
+                        System.out.println("Search");
+                        ArrayList Archons = EnemyArchonLocations();
+                        System.out.println("NUmber of known arcons: " + Archons.size());
+                        
+                        if(Archons.isEmpty()){
+                            Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
+                            tryMove(toTarget, 15, 12);
+                        }else if(Archons.size() == 1){
+                            MapLocation ArcLoc = (MapLocation) Archons.get(0);
+                            Direction toTarget = myLocation.directionTo(ArcLoc);
+                            tryMove(toTarget, 15, 12);
+                        }else if(Archons.size() > 1){
+                            int number = myRand.nextInt(Archons.size());
+                            System.out.println("Random: " + number);
+
+                            MapLocation ArcLoc = (MapLocation) Archons.get(number);
+                            Direction toTarget = myLocation.directionTo(ArcLoc);
+                            tryMove(toTarget, 15, 12);
+                        }
                         break;
                     case Shake:
                         System.out.println("Shake");
@@ -560,12 +575,20 @@ public strictfp class RobotPlayer {
                         break;
                     case Orbit:
                         System.out.println("Orbit");
-
+                        Direction toTargetArchon = myLocation.directionTo(ENEMY_ARCHON.getLocation());
+                        tryMove(toTargetArchon, 15, 12);
                         break;
                     case KillScout:
                         System.out.println("KillScout");
                         Direction ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
-                        tryMove(ToKillScout);
+
+                        System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
+
+                        if(getRange(TargetRobot.getLocation()) > 2.5){
+                            tryMove(ToKillScout);
+                            ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
+                        }
+
                         if (rc.canFireSingleShot()) {
                             // ...Then fire a bullet in the direction of the enemy.
                             rc.fireSingleShot(ToKillScout);
@@ -574,7 +597,14 @@ public strictfp class RobotPlayer {
                     case KillGardener:
                         System.out.println("KillGardener");
                         Direction ToKillGardener = myLocation.directionTo(TargetRobot.getLocation());
-                        tryMove(ToKillGardener);
+
+                        System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
+
+                        if(getRange(TargetRobot.getLocation()) > 2.5){
+                            tryMove(ToKillGardener);
+                            ToKillGardener = myLocation.directionTo(TargetRobot.getLocation());
+                        }
+
                         if (rc.canFireSingleShot()) {
                             // ...Then fire a bullet in the direction of the enemy.
                             rc.fireSingleShot(ToKillGardener);
@@ -612,6 +642,21 @@ public strictfp class RobotPlayer {
         }
     }
 
+    public static ArrayList EnemyArchonLocations() throws GameActionException {
+
+        ArrayList Locations = new ArrayList(0);
+
+        for (int i = ENEMY_ARCHON_LOG_START; i < ENEMY_ARCHON_LOG_START + 20; i = i + 3) {
+            if (rc.readBroadcast(i) == 0) {
+                return Locations;
+            } else if (rc.readBroadcast(i) > 0) {
+                MapLocation ArcLoc = new MapLocation((float)rc.readBroadcast(i + 1),(float)rc.readBroadcast(i + 2));
+                Locations.add(ArcLoc);
+            }
+        }
+
+        return Locations;
+    }
 
     static void runTank() throws GameActionException {
         System.out.println("I'm an tank!");
@@ -649,24 +694,6 @@ public strictfp class RobotPlayer {
         }
     }
 
-
-    public static void wander() throws GameActionException {
-        try {
-            Direction dir = randomDirection();
-            if (rc.canMove(dir)) {
-                rc.move(dir);
-            }else{
-                dir = randomDirection();
-                if (rc.canMove(dir)) {
-                    rc.move(dir);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     public static Direction randomDirection() {
         return(new Direction(myRand.nextFloat()*2*(float)Math.PI));
     }
@@ -678,7 +705,7 @@ public strictfp class RobotPlayer {
      * @throws GameActionException
      */
     static boolean tryMove(Direction dir) throws GameActionException {
-        return tryMove(dir,20,3);
+        return tryMove(dir,15,12);
     }
 
     /**
@@ -705,13 +732,23 @@ public strictfp class RobotPlayer {
         while(currentCheck<=checksPerSide) {
             // Try the offset of the left side
             if(rc.canMove(dir.rotateLeftDegrees(degreeOffset*currentCheck))) {
-                rc.move(dir.rotateLeftDegrees(degreeOffset*currentCheck));
-                return true;
+                if(rc.getLocation().add(dir.rotateLeftDegrees(degreeOffset*currentCheck)).equals(MY_LAST_LOCATION)){
+                    //dont move back to last location
+                }else {
+                    MY_LAST_LOCATION = rc.getLocation();
+                    rc.move(dir.rotateLeftDegrees(degreeOffset * currentCheck));
+                    return true;
+                }
             }
             // Try the offset on the right side
             if(rc.canMove(dir.rotateRightDegrees(degreeOffset*currentCheck))) {
-                rc.move(dir.rotateRightDegrees(degreeOffset*currentCheck));
-                return true;
+                if(rc.getLocation().add(dir.rotateRightDegrees(degreeOffset*currentCheck)).equals(MY_LAST_LOCATION)){
+                    //dont move back to last location
+                }else{
+                    MY_LAST_LOCATION = rc.getLocation();
+                    rc.move(dir.rotateRightDegrees(degreeOffset*currentCheck));
+                    return true;
+                }
             }
             // No move performed, try slightly further
             currentCheck++;
@@ -721,8 +758,9 @@ public strictfp class RobotPlayer {
         return false;
     }
 
-
-
+    static float getRange(MapLocation Target) {
+        return rc.getLocation().distanceTo(Target);
+    }
     /**
      * A slightly more complicated example function, this returns true if the given bullet is on a collision
      * course with the current robot. Doesn't take into account objects between the bullet and this robot.
@@ -756,48 +794,9 @@ public strictfp class RobotPlayer {
         return (perpendicularDist <= rc.getType().bodyRadius);
     }
 
-    static Direction antiGravMove(MapLocation Target) {
-        float xforce = 0;
-        float yforce = 0;
-        double force;
-        Direction ang;
-
-        RobotInfo[] robots = rc.senseNearbyRobots();
-
-        for (RobotInfo r : robots) {
-            float power = 1;
-
-            //Calculate the total force from this point on us
-            force = power/Math.pow(getRange(r.getLocation()),2);
-            System.out.println("force: " + force);
-
-            //Find the bearing from the point to us
-            ang = rc.getLocation().directionTo(r.getLocation());
-
-            //Add the components of this force to the total force in their
-            //respective directions
-            xforce += Math.sin(ang.radians) * force;
-            yforce += Math.cos(ang.radians) * force;
-
-        }
-        float NewX = Target.x - xforce;
-        float NewY = Target.y - yforce;
-
-        return new Direction(NewX, NewY);
-        //Move in the direction of our resolved force.
-        //goTo(getX()-xforce, getY()-yforce);
-    }
-
-    /**Move in the direction of an x and y coordinate**/
-    void goTo(double x, double y) {
-        //double dist = 20;
-        //double angle = Math.toDegrees(absbearing(getX(),getY(),x,y));
-    }
 
 
-    static float getRange(MapLocation Target) {
-        return rc.getLocation().distanceTo(Target);
-    }
+
 
     }
 
