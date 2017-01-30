@@ -237,17 +237,23 @@ public class Gardener extends Robot {
 
     private void HarvestMode() throws GameActionException {
         try {
-            int guardeners = getRc().readBroadcast(GARDENER);
-            int halfguard = guardeners/2;
-            int lumbers = getRc().readBroadcast(LUMBERJACK);
 
-            if(halfguard > lumbers && getRc().readBroadcast(LUMBERJACK) < Robot.MAX_LUMBERJACKS){
+
+            if(getRc().readBroadcast(LUMBERJACK) < Robot.MAX_LUMBERJACKS){
                 if (getRc().getTeamBullets() > 50 && getRc().getBuildCooldownTurns() == 0)
                     if (getRc().canBuildRobot(RobotType.LUMBERJACK, BUILD_DIRECTION)) {
                         getRc().buildRobot(RobotType.LUMBERJACK, BUILD_DIRECTION);
                     }
             }
 
+            if(getRc().getRoundNum() > 100) {
+                if (getRc().readBroadcast(SOLDIER) < Robot.MAX_SOLDIERS) {
+                    if (getRc().getTeamBullets() > 50 && getRc().getBuildCooldownTurns() == 0)
+                        if (getRc().canBuildRobot(RobotType.SOLDIER, BUILD_DIRECTION)) {
+                            getRc().buildRobot(RobotType.SOLDIER, BUILD_DIRECTION);
+                        }
+                }
+            }
 
             TreeInfo[] trees = getRc().senseNearbyTrees((float)1.5,getRc().getTeam());
             if (trees.length < 4) {

@@ -8,6 +8,7 @@ import java.util.Random;
 public abstract class Robot implements Runnable {
     public static int MAX_GARDENERS = 5;
     public static int MAX_LUMBERJACKS = 5;
+    public static int MAX_SOLDIERS = 5;
 
     public static int GARDENER = 3;
     public static int LUMBERJACK = 4;
