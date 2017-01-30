@@ -9,14 +9,14 @@ public abstract class Robot implements Runnable {
     public static int MAX_GARDENERS = 5;
     public static int MAX_LUMBERJACKS = 5;
 
-    public static int GARDENER = 1;
-    public static int LUMBERJACK = 2;
-    public static int ARCHON = 3;
-    public static int LEADER = 4;
-    public static int SHOULD_START_HARVESTING = 5;
-    public static int SCOUT = 6;
-    public static int SOLDIER = 7;
-    public static int TANK = 8;
+    public static int GARDENER = 3;
+    public static int LUMBERJACK = 4;
+    public static int ARCHON = 5;
+    public static int LEADER = 6;
+    public static int SHOULD_START_HARVESTING = 7;
+    public static int SCOUT = 8;
+    public static int SOLDIER = 9;
+    public static int TANK = 10;
 
     protected MapLocation[] enemyArchonStart = null;
     protected MapLocation targetEnemyArchonStart = null;
