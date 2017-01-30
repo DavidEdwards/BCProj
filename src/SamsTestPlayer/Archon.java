@@ -48,17 +48,12 @@ public class Archon extends Robot {
                     getRc().broadcast(0, (int) myLocation.x);
                     getRc().broadcast(1, (int) myLocation.y);
 
-
                     // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                     Clock.yield();
-
                 } catch (Exception e) {
                     System.out.println("Archon Exception");
                     e.printStackTrace();
                 }
-
-                // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
-                Clock.yield();
             }
         } catch (Exception e) {
             e.printStackTrace();

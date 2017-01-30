@@ -61,9 +61,6 @@ public class Gardener extends Robot {
                     System.out.println("Gardener Exception");
                     e.printStackTrace();
                 }
-
-
-
             }
         } catch (Exception e) {
             e.printStackTrace();

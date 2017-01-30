@@ -54,8 +54,6 @@ public class Soldier extends Robot {
                     System.out.println("Soldier Exception");
                     e.printStackTrace();
                 }
-                
-                
             }
         } catch (Exception e) {
             e.printStackTrace();

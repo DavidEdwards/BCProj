@@ -210,14 +210,6 @@ public class Scout extends Robot {
                     System.out.println("Scout Exception");
                     e.printStackTrace();
                 }
-                
-                
-                
-                
-                
-                
-                
-                
             }
         } catch (Exception e) {
             e.printStackTrace();
