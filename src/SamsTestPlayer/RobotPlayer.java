@@ -506,6 +506,14 @@ public strictfp class RobotPlayer {
         System.out.println("I'm a lumberjack!");
         Team enemy = rc.getTeam().opponent();
         rc.broadcast(LUMBERJACK_COUNT_CHANNEL,rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL) + 1);
+
+        EnemyArchonStart = rc.getInitialArchonLocations(enemy); //TargetEnemyArchonStart
+        if(EnemyArchonStart.length == 1){
+            TargetEnemyArchonStart = EnemyArchonStart[0];
+        }else{
+            int randomNum = myRand.nextInt(EnemyArchonStart.length - 1);
+            TargetEnemyArchonStart = EnemyArchonStart[randomNum];
+        }
         // The code you want your robot to perform every round should be in this loop
         while (true) {
 
@@ -634,8 +642,8 @@ public strictfp class RobotPlayer {
                         break;
                     case Chop:
                         System.out.println("Chop");
-                        Direction toTargetArchon = myLocation.directionTo(ENEMY_ARCHON.getLocation());
-                        tryMove(toTargetArchon, 15, 12);
+                        Direction ToTargetTree = myLocation.directionTo(TargetTree.getLocation());
+                        tryMove(ToTargetTree, 15, 12);
                         if (rc.canChop(TargetTree.getID())) {
                             rc.chop(TargetTree.getID());
                         }
