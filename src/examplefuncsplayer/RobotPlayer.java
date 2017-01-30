@@ -155,7 +155,7 @@ public strictfp class RobotPlayer {
                 RobotInfo[] robots = rc.senseNearbyRobots(RobotType.LUMBERJACK.bodyRadius+GameConstants.LUMBERJACK_STRIKE_RADIUS, enemy);
 
                 if(robots.length > 0 && !rc.hasAttacked()) {
-                    // Use strike() to hit all nearby robots!
+                    // Use Strike() to hit all nearby robots!
                     rc.strike();
                 } else {
                     // No close robots, so search for robots within sight radius
