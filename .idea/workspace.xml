@@ -4,11 +4,6 @@
     <list default="true" id="03365bc2-66ac-4c4b-a663-df82d6c66905" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/Archon.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/Archon.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/Scout.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/Scout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/Soldier.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/Soldier.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SamsTestPlayer/Tank.java" afterPath="$PROJECT_DIR$/src/SamsTestPlayer/Tank.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -79,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Soldier.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Soldier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Soldier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="55" column="17" lean-forward="false" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+            <state relative-caret-position="247">
+              <caret line="35" column="131" lean-forward="true" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
               <folding />
             </state>
           </provider>
@@ -112,8 +107,8 @@
       <file leaf-file-name="Lumberjack.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="169" column="147" lean-forward="true" selection-start-line="169" selection-start-column="102" selection-end-line="169" selection-end-column="102" />
+            <state relative-caret-position="214">
+              <caret line="48" column="86" lean-forward="true" selection-start-line="48" selection-start-column="75" selection-end-line="48" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -124,18 +119,18 @@
       <file leaf-file-name="Archon.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Archon.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="324">
+              <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gardener.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gardener.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="62" column="17" lean-forward="false" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
+            <state relative-caret-position="489">
+              <caret line="260" column="82" lean-forward="true" selection-start-line="260" selection-start-column="72" selection-end-line="260" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -144,20 +139,10 @@
       <file leaf-file-name="Robot.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Robot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+            <state relative-caret-position="374">
+              <caret line="23" column="100" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4042#4043#0" expanded="true" />
-                <element signature="e#4105#4106#0" expanded="true" />
-                <element signature="e#4730#4731#0" expanded="true" />
-                <element signature="e#4809#4810#0" expanded="true" />
-                <element signature="e#8972#8973#0" expanded="true" />
-                <element signature="e#9003#9004#0" expanded="true" />
-                <element signature="e#9030#9031#0" expanded="true" />
-                <element signature="e#9056#9057#0" expanded="true" />
-                <element signature="e#9090#9091#0" expanded="true" />
-                <element signature="e#9111#9112#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -183,6 +168,9 @@
       <find>RobotPlayer.LumberjackTaskList</find>
       <find>RobotPlayer.ScoutTaskList</find>
       <find>rc.</find>
+      <find>build</find>
+      <find>isHarvestMode</find>
+      <find>GoodPlaceToFarm</find>
     </findStrings>
     <replaceStrings>
       <replace>GardenerTaskList</replace>
@@ -579,14 +567,14 @@
         <option value="$PROJECT_DIR$/src/MMKBplayer/RobotPlayer.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/MMKBplayer/DecisionEngine.java" />
-        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Robot.java" />
         <option value="$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java" />
-        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java" />
-        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java" />
-        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Archon.java" />
         <option value="$PROJECT_DIR$/src/SamsTestPlayer/Scout.java" />
         <option value="$PROJECT_DIR$/src/SamsTestPlayer/Tank.java" />
         <option value="$PROJECT_DIR$/src/SamsTestPlayer/Soldier.java" />
+        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java" />
+        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Robot.java" />
+        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java" />
+        <option value="$PROJECT_DIR$/src/SamsTestPlayer/Archon.java" />
       </list>
     </option>
   </component>
@@ -1503,26 +1491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Robot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="33" lean-forward="false" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4042#4043#0" expanded="true" />
-            <element signature="e#4105#4106#0" expanded="true" />
-            <element signature="e#4730#4731#0" expanded="true" />
-            <element signature="e#4809#4810#0" expanded="true" />
-            <element signature="e#8972#8973#0" expanded="true" />
-            <element signature="e#9003#9004#0" expanded="true" />
-            <element signature="e#9030#9031#0" expanded="true" />
-            <element signature="e#9056#9057#0" expanded="true" />
-            <element signature="e#9090#9091#0" expanded="true" />
-            <element signature="e#9111#9112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/RobotPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -1538,32 +1506,6 @@
         <state relative-caret-position="357">
           <caret line="131" column="66" lean-forward="true" selection-start-line="131" selection-start-column="43" selection-end-line="131" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="62" column="17" lean-forward="false" selection-start-line="62" selection-start-column="17" selection-end-line="62" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Archon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="169" column="147" lean-forward="true" selection-start-line="169" selection-start-column="102" selection-end-line="169" selection-end-column="102" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1585,8 +1527,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Soldier.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="55" column="17" lean-forward="false" selection-start-line="55" selection-start-column="17" selection-end-line="55" selection-end-column="17" />
+        <state relative-caret-position="247">
+          <caret line="35" column="131" lean-forward="true" selection-start-line="35" selection-start-column="78" selection-end-line="35" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Lumberjack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="48" column="86" lean-forward="true" selection-start-line="48" selection-start-column="75" selection-end-line="48" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Robot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="23" column="100" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Archon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="36" column="61" lean-forward="false" selection-start-line="36" selection-start-column="61" selection-end-line="36" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SamsTestPlayer/Gardener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="260" column="82" lean-forward="true" selection-start-line="260" selection-start-column="72" selection-end-line="260" selection-end-column="72" />
           <folding />
         </state>
       </provider>
