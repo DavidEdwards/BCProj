@@ -4,12 +4,10 @@ import battlecode.common.*;
 
 public class Gardener extends Robot {
 
-    private static int gardenerCount = 0;
-
     public Gardener(RobotController rc) {
         super(rc);
-        gardenerCount++;
-        System.out.println("Make a new gardener: count: "+gardenerCount);
+        reportAlive();
+        System.out.println("Make a new gardener");
     }
 
     @Override
@@ -48,15 +46,24 @@ public class Gardener extends Robot {
     }
 
     @Override
+    public void reportAlive() {
+        try {
+            getRc().broadcast(GARDENER_COUNT_CHANNEL,getRc().readBroadcast(GARDENER_COUNT_CHANNEL) + 1);
+        } catch (GameActionException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
     public void reportDeath() {
         if(isDeathReported) return;
 
         isDeathReported = true;
-        gardenerCount--;
-        System.out.println("Gardener dead: #YOLO: count: " + gardenerCount);
-    }
-
-    public static int getGardenerCount() {
-        return gardenerCount;
+        try {
+            getRc().broadcast(GARDENER_COUNT_CHANNEL,getRc().readBroadcast(GARDENER_COUNT_CHANNEL) - 1);
+        } catch (GameActionException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Gardener dead: #YOLO.");
     }
 }

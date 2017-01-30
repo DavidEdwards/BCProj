@@ -3,6 +3,7 @@ package DavesPlayerYolo;
 import battlecode.common.*;
 
 public abstract class Robot implements Runnable {
+    public static int GARDENER_COUNT_CHANNEL = 1;
 
     private static int count = 0;
     private RobotController rc = null;
@@ -10,7 +11,6 @@ public abstract class Robot implements Runnable {
     protected boolean isDeathReported = false;
     private boolean running = true;
     private float maxHealth = 0f;
-    private float currentHealth = 0f;
 
 
     public Robot(RobotController rc) {
@@ -21,6 +21,7 @@ public abstract class Robot implements Runnable {
     @Override
     public abstract void run();
 
+    public abstract void reportAlive();
     public abstract void reportDeath();
 
     /**
@@ -137,14 +138,6 @@ public abstract class Robot implements Runnable {
 
     public void setMaxHealth(float maxHealth) {
         this.maxHealth = maxHealth;
-    }
-
-    public float getCurrentHealth() {
-        return currentHealth;
-    }
-
-    public void setCurrentHealth(float currentHealth) {
-        this.currentHealth = currentHealth;
     }
 
     public static int getTotalRobotCount() {
