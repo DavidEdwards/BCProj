@@ -25,15 +25,31 @@ public strictfp class RobotPlayer {
     static MapLocation TargetEnemyArchonStart = null;
     static MapLocation MY_LAST_LOCATION = null;
 
+    static int AGE = 0;
     static boolean AM_LEADER = false;
+    static boolean HARVEST_MODE = false;
+    static Direction Direction_to_move = null;
+    static Direction BUILD_DIRECTION = null;
+
+
+
+
     static int LEADER_TURNS = 0;
+
     static int GARDENER_MAX = 100;
     static int Num_of_Moves = 0;
-    static Direction Direction_to_move = null;
+
+
+
 
     public enum ScoutTaskList{
         KillScout, KillGardener, Orbit, Shake, Search, None
     }
+
+    public enum GardenerTaskList{
+        moveawayfromarchon, goodplacetofarm, badplacetofarm, None
+    }
+
 
     //public enum rcstate{none, chop, shake}
 
@@ -43,6 +59,7 @@ public strictfp class RobotPlayer {
         // and to get information on its current status.
         RobotPlayer.rc = rc;
         myRand = new Random(rc.getID());
+
         // Here, we've separated the controls into a different method for each RobotType.
         // You can add the missing ones or rewrite this into your own control structure.
         switch (rc.getType()) {
@@ -158,9 +175,11 @@ public strictfp class RobotPlayer {
 	static void runGardener() throws GameActionException {
         System.out.println("I'm a gardener!");
         rc.broadcast(GARDENER_COUNT_CHANNEL,rc.readBroadcast(GARDENER_COUNT_CHANNEL) + 1);
+
+        Team enemy = rc.getTeam().opponent();
         // The code you want your robot to perform every round should be in this loop
         while (true) {
-
+            AGE++;
             // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
             try {
                 checkForLeader(rc.getRoundNum(), rc.readBroadcast(LEADER_TRACKING_CHANNEL), 15);
@@ -168,54 +187,10 @@ public strictfp class RobotPlayer {
                     LeaderCode();
                 }
 
-                if(Num_of_Moves == 0){
-                    for (float i = 0; i < 6.2; i = i + (float) 0.2) {
-                        Direction TempDir = new Direction(i);
-                        if (rc.canBuildRobot(RobotType.SCOUT, TempDir)) {
-                            rc.buildRobot(RobotType.SCOUT, TempDir);
-                            break;
-                        }
-                    }
-                }
-
-                if(Direction_to_move == null){
-                    boolean direction_found = false;
-                    Direction_to_move = randomDirection();
-                    if (rc.canMove(Direction_to_move) == false){
-
-                        for (float i = 0; i < 6.2; i = i + (float) 0.5) {
-                            Direction_to_move = Direction_to_move.rotateRightRads((float)0.5);
-                            if (rc.canMove(Direction_to_move)){
-                                direction_found = true;
-                                break;
-                            }
-                        }
-                    }else{
-                        direction_found = true;
-                    }
-                    if (direction_found == false){
-                        //robot is penned in and cant move, stop it moving
-                        Num_of_Moves = 999999999;
-                    }
-                }
-
-
-                if(Num_of_Moves < 25) {
-
-                    if (rc.canMove(Direction_to_move)) {
-                        rc.move(Direction_to_move);
-                        Num_of_Moves++;
-                    }else{
-                        Num_of_Moves = 999999999;
-                    }
-
-                }else {
-                    if (rc.readBroadcast(SHOULD_START_HARVESTING) == 1) {
-
-                        HarvestMode();
-
-                    } else {
-
+                if(HARVEST_MODE){
+                    HarvestMode();
+                }else{
+                    if(AGE == 1){
                         if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
                             for (float i = 0; i < 6.2; i = i + (float) 0.2) {
                                 Direction TempDir = new Direction(i);
@@ -225,9 +200,14 @@ public strictfp class RobotPlayer {
                                 }
                             }
                         }
-
                     }
+
+                    SearchForLocation();
+
+
                 }
+
+
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
 
@@ -238,36 +218,212 @@ public strictfp class RobotPlayer {
         }
     }
 
+    public static void SearchForLocation() throws GameActionException {
+        RobotInfo[] robots = rc.senseNearbyRobots();
+
+        Team enemy = rc.getTeam().opponent();
+
+        int NUM_OF_ENEMY_ARCHON = 0;
+        int NUM_OF_ENEMY_GARDENER = 0;
+        int NUM_OF_ENEMY_SOLDIER = 0;
+        int NUM_OF_ENEMY_LUMBERJACK = 0;
+        int NUM_OF_ENEMY_SCOUT = 0;
+        int NUM_OF_ENEMY_TANK = 0;
+
+        RobotInfo FRIEND_ARCHON = null;
+
+        GardenerTaskList RobotTask = GardenerTaskList.None; //no task picked yet this turn
+
+        for (RobotInfo r : robots) {
+            switch (r.getType()) {
+                case ARCHON:
+                    //broadcast archon location
+                    if(r.getTeam() == enemy){
+                        NUM_OF_ENEMY_ARCHON++;
+                        LogEnemyArchonLocation(r);
+                    }else{
+                        RobotTask = GardenerTaskList.moveawayfromarchon;
+                        FRIEND_ARCHON = r;
+                    }
+                    break;
+                case GARDENER:
+                    if(r.getTeam() == enemy){
+                        NUM_OF_ENEMY_GARDENER++;
+                    }else{
+
+                    }
+                    break;
+                case SOLDIER:
+                    if(r.getTeam() == enemy){
+                        NUM_OF_ENEMY_SOLDIER++;
+                    }else{
+
+                    }
+                    break;
+                case LUMBERJACK:
+                    if(r.getTeam() == enemy){
+                        NUM_OF_ENEMY_LUMBERJACK++;
+                    }else{
+
+                    }
+                    break;
+                case SCOUT:
+                    if(r.getTeam() == enemy){
+                        NUM_OF_ENEMY_SCOUT++;
+                    }else{
+
+                    }
+                    break;
+                case TANK:
+                    if(r.getTeam() == enemy){
+                        NUM_OF_ENEMY_TANK++;
+                    }else{
+
+                    }
+                    break;
+            }
+
+        }
+
+        //2: check if here is a good spot for a garden
+        if(RobotTask == GardenerTaskList.None) {
+
+            boolean IS_THERE_ROOM = true;
+
+            EnemyArchonStart = rc.getInitialArchonLocations(enemy);
+            if(EnemyArchonStart.length == 1){
+                TargetEnemyArchonStart = EnemyArchonStart[0];
+            }else{
+                int randomNum = myRand.nextInt(EnemyArchonStart.length - 1);
+                TargetEnemyArchonStart = EnemyArchonStart[randomNum];
+            }
+            BUILD_DIRECTION = rc.getLocation().directionTo(TargetEnemyArchonStart);
+
+
+            Direction TREE2 = BUILD_DIRECTION.rotateRightDegrees(72);
+            Direction TREE3 = BUILD_DIRECTION.rotateLeftDegrees(72);
+            Direction TREE4 = BUILD_DIRECTION.rotateRightDegrees(144);
+            Direction TREE5 = BUILD_DIRECTION.rotateLeftDegrees(144);
+
+            if(rc.canPlantTree(BUILD_DIRECTION)){
+
+                rc.setIndicatorDot(rc.getLocation().add(BUILD_DIRECTION), 0, 255, 0);
+
+            }else{
+                rc.setIndicatorDot(rc.getLocation().add(BUILD_DIRECTION), 0, 0, 255);
+                IS_THERE_ROOM = false;
+            }
+
+            if(rc.canPlantTree(TREE2)){
+                rc.setIndicatorDot(rc.getLocation().add(TREE2), 255, 0, 0);
+
+            }else{
+                rc.setIndicatorDot(rc.getLocation().add(TREE2), 0, 0, 255);
+                IS_THERE_ROOM = false;
+            }
+
+            if(rc.canPlantTree(TREE3)){
+                rc.setIndicatorDot(rc.getLocation().add(TREE3), 255, 0, 0);
+
+            }else{
+                rc.setIndicatorDot(rc.getLocation().add(TREE3), 0, 0, 255);
+                IS_THERE_ROOM = false;
+            }
+
+            if(rc.canPlantTree(TREE4)){
+                rc.setIndicatorDot(rc.getLocation().add(TREE4), 255, 0, 0);
+
+            }else{
+                rc.setIndicatorDot(rc.getLocation().add(TREE4), 0, 0, 255);
+                IS_THERE_ROOM = false;
+            }
+
+            if(rc.canPlantTree(TREE5)){
+                rc.setIndicatorDot(rc.getLocation().add(TREE5), 255, 0, 0);
+
+            }else{
+                rc.setIndicatorDot(rc.getLocation().add(TREE5), 0, 0, 255);
+                IS_THERE_ROOM = false;
+            }
+
+            if(IS_THERE_ROOM){
+                System.out.println("Is Room");
+                RobotTask = GardenerTaskList.goodplacetofarm;
+
+            }else{
+                System.out.println("No Room");
+                RobotTask = GardenerTaskList.badplacetofarm;
+            }
+
+        }
+
+
+        switch (RobotTask) {
+            case moveawayfromarchon:
+                Direction AwayFromArchon = rc.getLocation().directionTo(FRIEND_ARCHON.getLocation()).opposite();
+                tryMove(AwayFromArchon, 15, 12);
+                Direction_to_move = AwayFromArchon;
+                break;
+            case goodplacetofarm:
+                HARVEST_MODE = true;
+                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
+                if (rc.canBuildRobot(RobotType.SCOUT, BUILD_DIRECTION)) {
+                    rc.buildRobot(RobotType.SCOUT, BUILD_DIRECTION);
+                }
+            }
+                break;
+            case badplacetofarm:
+                if(rc.canMove(Direction_to_move)){
+                    tryMove(Direction_to_move, 15, 12);
+                }else{
+                    Direction_to_move = randomDirection();
+                    tryMove(Direction_to_move, 15, 12);
+                }
+                break;
+        }
+    }
+
     public static void HarvestMode() throws GameActionException {
         try {
+
             int guardeners = rc.readBroadcast(GARDENER_COUNT_CHANNEL);
             int halfguard = guardeners/2;
             int lumbers = rc.readBroadcast(LUMBERJACK_COUNT_CHANNEL);
 
-            if( halfguard > lumbers){
-                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
-                    for (float i = 0; i < 6.2; i = i + (float) 0.2) {
-                        Direction TempDir = new Direction(i);
-                        if (rc.canBuildRobot(RobotType.LUMBERJACK, TempDir)) {
-                            rc.buildRobot(RobotType.LUMBERJACK, TempDir);
 
-                            break;
-                        }
+            if( halfguard > lumbers){
+                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0)
+                    if (rc.canBuildRobot(RobotType.LUMBERJACK, BUILD_DIRECTION)) {
+                        rc.buildRobot(RobotType.LUMBERJACK, BUILD_DIRECTION);
                     }
-                }
             }
 
 
             TreeInfo[] trees = rc.senseNearbyTrees((float)1.5,rc.getTeam());
-            if (trees.length < 5) {
-                if (rc.getTeamBullets() > 50 && rc.getBuildCooldownTurns() == 0) {
-                    for (float i = 0; i < 6.2; i = i + (float) 0.2) {
-                        Direction TempDir = new Direction(i);
-                        if (rc.canPlantTree(TempDir)) {
-                            rc.plantTree(TempDir);
-                            break;
-                        }
-                    }
+            if (trees.length < 4) {
+                Direction TREE2 = BUILD_DIRECTION.rotateRightDegrees(72);
+                Direction TREE3 = BUILD_DIRECTION.rotateLeftDegrees(72);
+                Direction TREE4 = BUILD_DIRECTION.rotateRightDegrees(144);
+                Direction TREE5 = BUILD_DIRECTION.rotateLeftDegrees(144);
+
+                if(rc.canPlantTree(TREE2)){
+                    rc.setIndicatorDot(rc.getLocation().add(TREE2), 255, 0, 0);
+                    rc.plantTree(TREE2);
+                }
+
+                if(rc.canPlantTree(TREE3)){
+                    rc.setIndicatorDot(rc.getLocation().add(TREE3), 255, 0, 0);
+                    rc.plantTree(TREE3);
+                }
+
+                if(rc.canPlantTree(TREE4)){
+                    rc.setIndicatorDot(rc.getLocation().add(TREE4), 255, 0, 0);
+                    rc.plantTree(TREE4);
+                }
+
+                if(rc.canPlantTree(TREE5)){
+                    rc.setIndicatorDot(rc.getLocation().add(TREE5), 255, 0, 0);
+                    rc.plantTree(TREE5);
                 }
 
             }
@@ -466,6 +622,7 @@ public strictfp class RobotPlayer {
 
                 RobotInfo TargetRobot = null;
                 RobotInfo ENEMY_ARCHON = null;
+                RobotInfo ENEMY_JACK_TO_AVOID = null;
 
                 TreeInfo TargetShakeTree = null;
 
@@ -500,6 +657,10 @@ public strictfp class RobotPlayer {
                             break;
                         case LUMBERJACK:
                             NUM_OF_ENEMY_LUMBERJACK++;
+                            System.out.println("Enemy lumberjack detected at range: " + getRange(r.getLocation()));
+                            if(getRange(r.getLocation()) < 5){
+                                ENEMY_JACK_TO_AVOID = r;
+                            }
                             break;
                         case SCOUT:
                             NUM_OF_ENEMY_SCOUT++;
@@ -544,7 +705,7 @@ public strictfp class RobotPlayer {
                         System.out.println("Search");
                         ArrayList Archons = EnemyArchonLocations();
                         System.out.println("NUmber of known arcons: " + Archons.size());
-                        
+
                         if(Archons.isEmpty()){
                             Direction toTarget = myLocation.directionTo(TargetEnemyArchonStart);
                             tryMove(toTarget, 15, 12);
@@ -612,6 +773,10 @@ public strictfp class RobotPlayer {
                         break;
                 }
 
+                if (ENEMY_JACK_TO_AVOID != null & rc.hasMoved() == false){
+                    Direction toTarget = myLocation.directionTo(ENEMY_JACK_TO_AVOID.getLocation());
+                    tryMove(toTarget.rotateLeftDegrees(90), 15, 12);
+                }
 
                 // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again
                 Clock.yield();
