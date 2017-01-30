@@ -43,7 +43,7 @@ public class Gardener extends Robot {
                             if (getRc().getTeamBullets() > 50 && getRc().getBuildCooldownTurns() == 0) {
                                 for (float i = 0; i < 6.2; i = i + (float) 0.2) {
                                     Direction TempDir = new Direction(i);
-                                    if (getRc().canBuildRobot(RobotType.LUMBERJACK, TempDir) && getRc().readBroadcast(LUMBERJACK) < Robot.MAX_LUMBERJACKS) {
+                                    if (getRc().canBuildRobot(RobotType.LUMBERJACK, TempDir)) {
                                         getRc().buildRobot(RobotType.LUMBERJACK, TempDir);
                                         break;
                                     }
@@ -237,13 +237,11 @@ public class Gardener extends Robot {
 
     private void HarvestMode() throws GameActionException {
         try {
-
             int guardeners = getRc().readBroadcast(GARDENER);
             int halfguard = guardeners/2;
             int lumbers = getRc().readBroadcast(LUMBERJACK);
 
-
-            if( halfguard > lumbers){
+            if(halfguard > lumbers && getRc().readBroadcast(LUMBERJACK) < Robot.MAX_LUMBERJACKS){
                 if (getRc().getTeamBullets() > 50 && getRc().getBuildCooldownTurns() == 0)
                     if (getRc().canBuildRobot(RobotType.LUMBERJACK, BUILD_DIRECTION)) {
                         getRc().buildRobot(RobotType.LUMBERJACK, BUILD_DIRECTION);
