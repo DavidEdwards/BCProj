@@ -2,7 +2,7 @@ package SamsTestPlayer;
 
 import battlecode.common.*;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Lumberjack extends Robot {
 
@@ -44,6 +44,11 @@ public class Lumberjack extends Robot {
                     RobotInfo[] FriendlyRobots = getRc().senseNearbyRobots(RobotType.LUMBERJACK.bodyRadius+GameConstants.LUMBERJACK_STRIKE_RADIUS, getRc().getTeam());
 
                     TreeInfo[] Trees = getRc().senseNearbyTrees();
+                    List<TreeInfo> treesList = new ArrayList<>();
+                    for(TreeInfo tree : Trees) {
+                        if(!tree.getTeam().isPlayer()) treesList.add(tree);
+                    }
+                    Trees = treesList.toArray(new TreeInfo[treesList.size()]);
 
                     TaskList RobotTask = TaskList.None;
                     RobotInfo TargetRobot = null;
@@ -95,13 +100,11 @@ public class Lumberjack extends Robot {
 
                     //Task 2 check for trees with interest
 
-                    if(RobotTask == TaskList.None){
-                        for (TreeInfo t : Trees) {
-                            if (t.containedRobot != null) {
-                                TargetTree = t;
-                                RobotTask = TaskList.Chop;
-                                break;
-                            }
+                    if(RobotTask == TaskList.None)
+                    {
+                        if(Trees.length > 0) {
+                            TargetTree = Trees[0];
+                            RobotTask = TaskList.Chop;
                         }
                     }
 
@@ -116,7 +119,6 @@ public class Lumberjack extends Robot {
                             }
                         }
                     }
-
 
                     //task 4 move towards enemy archon.
 
@@ -160,11 +162,15 @@ public class Lumberjack extends Robot {
                             break;
                         case Chop:
                             System.out.println("Chop");
-                            Direction ToTargetTree = myLocation.directionTo(TargetTree.getLocation());
-                            tryMove(ToTargetTree, 15, 12);
+                            getRc().setIndicatorDot(TargetTree.getLocation(), 255, 255, 255);
+
                             if (getRc().canChop(TargetTree.getID())) {
                                 getRc().chop(TargetTree.getID());
+                            }else{
+                                Direction ToTargetTree = myLocation.directionTo(TargetTree.getLocation());
+                                tryMove(ToTargetTree, 15, 12);
                             }
+                            break;
                         case Strike:
                             System.out.println("Strike");
                             Direction ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
