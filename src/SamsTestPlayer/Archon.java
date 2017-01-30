@@ -34,10 +34,8 @@ public class Archon extends Robot {
 
                     // Randomly attempt to build a gardener in this direction
                     if (getRc().getBuildCooldownTurns() == 0) {
-                        System.out.println("---- "+getRc().readBroadcast(GARDENER));
-                        if (getRc().canBuildRobot(RobotType.GARDENER, dir) && getRc().readBroadcast(GARDENER) < Robot.MAX_GARDENERS) {
+                        if (getRc().getTeamBullets() > 100 && getRc().canBuildRobot(RobotType.GARDENER, dir) && getRc().readBroadcast(GARDENER) < Robot.MAX_GARDENERS) {
                             getRc().hireGardener(dir);
-
                         }
                     }
 
