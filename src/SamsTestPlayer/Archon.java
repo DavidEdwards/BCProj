@@ -29,13 +29,12 @@ public class Archon extends Robot {
                         LeaderCode();
                     }
 
-
                     // Generate a random direction
                     Direction dir = randomDirection();
 
                     // Randomly attempt to build a gardener in this direction
                     if (getRc().getBuildCooldownTurns() == 0) {
-                        if (getRc().getTeamBullets() > 250 && getRc().canBuildRobot(RobotType.GARDENER, dir)) {
+                        if (getRc().getTeamBullets() > 250 && getRc().canBuildRobot(RobotType.GARDENER, dir) && getRc().readBroadcast(GARDENER) < 10) {
                             getRc().hireGardener(dir);
 
                         }
