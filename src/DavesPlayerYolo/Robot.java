@@ -5,7 +5,6 @@ import battlecode.common.*;
 public abstract class Robot implements Runnable {
     public static int GARDENER_COUNT_CHANNEL = 1;
 
-    private static int count = 0;
     private RobotController rc = null;
 
     protected boolean isDeathReported = false;
@@ -15,7 +14,6 @@ public abstract class Robot implements Runnable {
 
     public Robot(RobotController rc) {
         this.rc = rc;
-        count++;
     }
 
     @Override
@@ -138,9 +136,5 @@ public abstract class Robot implements Runnable {
 
     public void setMaxHealth(float maxHealth) {
         this.maxHealth = maxHealth;
-    }
-
-    public static int getTotalRobotCount() {
-        return count;
     }
 }
