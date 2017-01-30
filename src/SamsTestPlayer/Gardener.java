@@ -43,7 +43,7 @@ public class Gardener extends Robot {
                             if (getRc().getTeamBullets() > 50 && getRc().getBuildCooldownTurns() == 0) {
                                 for (float i = 0; i < 6.2; i = i + (float) 0.2) {
                                     Direction TempDir = new Direction(i);
-                                    if (getRc().canBuildRobot(RobotType.LUMBERJACK, TempDir) && getRc().readBroadcast(LUMBERJACK) < 10) {
+                                    if (getRc().canBuildRobot(RobotType.LUMBERJACK, TempDir) && getRc().readBroadcast(LUMBERJACK) < Robot.MAX_LUMBERJACKS) {
                                         getRc().buildRobot(RobotType.LUMBERJACK, TempDir);
                                         break;
                                     }

@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Robot implements Runnable {
+    public static int MAX_GARDENERS = 10;
+    public static int MAX_LUMBERJACKS = 10;
+
     public static int GARDENER = 1;
     public static int LUMBERJACK = 2;
     public static int ARCHON = 3;
