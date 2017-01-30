@@ -7,13 +7,11 @@ public class Gardener extends Robot {
     public Gardener(RobotController rc) {
         super(rc);
         reportAlive();
-        System.out.println("Make a new gardener");
     }
 
     @Override
     public void run() {
         try {
-            setMaxHealth(getRc().getHealth());
             while (isRunning()) {
                 if(getRc().getHealth() < (getMaxHealth() / 10)) {
                     reportDeath();
@@ -52,6 +50,7 @@ public class Gardener extends Robot {
         } catch (GameActionException e) {
             e.printStackTrace();
         }
+        System.out.println("Gardener alive.");
     }
 
     @Override

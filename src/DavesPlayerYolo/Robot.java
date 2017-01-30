@@ -14,6 +14,7 @@ public abstract class Robot implements Runnable {
 
     public Robot(RobotController rc) {
         this.rc = rc;
+        setMaxHealth(getRc().getHealth());
     }
 
     @Override
