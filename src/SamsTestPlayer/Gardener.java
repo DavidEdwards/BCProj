@@ -94,7 +94,10 @@ public class Gardener extends Robot {
                         NUM_OF_ENEMY_ARCHON++;
                         LogEnemyArchonLocation(r);
                     }else{
-                        RobotTask = TaskList.MoveAwayFromArchon;
+                        if(getAge() < 50){
+                            RobotTask = TaskList.MoveAwayFromArchon;
+                        }
+
                         FRIEND_ARCHON = r;
                     }
                     break;
