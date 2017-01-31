@@ -192,6 +192,9 @@ public abstract class Robot implements Runnable {
         return new Direction((float)Math.random() * 2 * (float)Math.PI);
     }
 
+    protected boolean tryMove(Direction dir) throws GameActionException {
+        return tryMove(dir, 20,3);
+    }
     /**
      * Attempts to move in a given direction, while avoiding small obstacles directly in the path.
      *
@@ -212,6 +215,8 @@ public abstract class Robot implements Runnable {
      * @return true if a move was performed
      * @throws GameActionException
      */
+
+
 
     protected boolean tryMove(Direction dir, float degreeOffset, int checksPerSide) throws GameActionException {
 
@@ -302,7 +307,7 @@ public abstract class Robot implements Runnable {
             return(true);
         }
         else {
-            //wander();
+            wander();
             return(false);
         }
         // insert move randomly code here
@@ -377,4 +382,10 @@ public abstract class Robot implements Runnable {
     public void incrementAge() {
         age++;
     }
+
+    protected void wander() throws GameActionException {
+        //Direction dir = randomDirection();
+        tryMove(randomDirection());
+    }
+
 }
