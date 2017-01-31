@@ -77,6 +77,14 @@ public abstract class Robot implements Runnable {
             getRc().broadcast(MAX_GARDENERS_CHANNEL, 1);
         }
 
+        if(getRc().getRoundNum() > 100){
+            getRc().broadcast(MAX_GARDENERS_CHANNEL, 3);
+        }
+
+        if(getRc().getRoundNum() > 300){
+            getRc().broadcast(MAX_GARDENERS_CHANNEL, 5);
+        }
+
         TreeInfo[] trees = getRc().senseNearbyTrees();
         int count = 0;
         for (TreeInfo t : trees) {
