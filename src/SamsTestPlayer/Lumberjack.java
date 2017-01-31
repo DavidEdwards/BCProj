@@ -134,18 +134,18 @@ public class Lumberjack extends Robot {
 
                             if(Archons.isEmpty()){
                                 Direction toTarget = myLocation.directionTo(targetEnemyArchonStart);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(targetEnemyArchonStart);
                             }else if(Archons.size() == 1){
                                 MapLocation ArcLoc = (MapLocation) Archons.get(0);
                                 Direction toTarget = myLocation.directionTo(ArcLoc);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(ArcLoc);
                             }else if(Archons.size() > 1){
                                 int number = rand.nextInt(Archons.size());
                                 System.out.println("Random: " + number);
 
                                 MapLocation ArcLoc = (MapLocation) Archons.get(number);
                                 Direction toTarget = myLocation.directionTo(ArcLoc);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(ArcLoc);
                             }
                             break;
                         case Shake:
@@ -156,7 +156,7 @@ public class Lumberjack extends Robot {
                                 }else{
                                     //move toward tree
                                     Direction toTree = myLocation.directionTo(TargetTree.getLocation());
-                                    tryMove(toTree);
+                                    moveToTarget(TargetTree.getLocation());
                                 }
                             }
                             break;
@@ -168,7 +168,7 @@ public class Lumberjack extends Robot {
                                 getRc().chop(TargetTree.getID());
                             }else{
                                 Direction ToTargetTree = myLocation.directionTo(TargetTree.getLocation());
-                                tryMove(ToTargetTree, 15, 12);
+                                moveToTarget(TargetTree.getLocation());
                             }
                             break;
                         case Strike:
@@ -178,7 +178,7 @@ public class Lumberjack extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillScout);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
                             }
 

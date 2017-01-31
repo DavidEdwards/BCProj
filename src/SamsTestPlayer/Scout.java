@@ -133,18 +133,18 @@ public class Scout extends Robot {
 
                             if(Archons.isEmpty()){
                                 Direction toTarget = myLocation.directionTo(targetEnemyArchonStart);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(targetEnemyArchonStart);
                             }else if(Archons.size() == 1){
                                 MapLocation ArcLoc = (MapLocation) Archons.get(0);
                                 Direction toTarget = myLocation.directionTo(ArcLoc);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(ArcLoc);
                             }else if(Archons.size() > 1){
                                 int number = rand.nextInt(Archons.size());
                                 System.out.println("Random: " + number);
 
                                 MapLocation ArcLoc = (MapLocation) Archons.get(number);
                                 Direction toTarget = myLocation.directionTo(ArcLoc);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(ArcLoc);
                             }
                             break;
                         case Shake:
@@ -155,14 +155,14 @@ public class Scout extends Robot {
                                 }else{
                                     //move toward tree
                                     Direction toTree = myLocation.directionTo(TargetShakeTree.getLocation());
-                                    tryMove(toTree);
+                                    moveToTarget(TargetShakeTree.getLocation());
                                 }
                             }
                             break;
                         case Orbit:
                             System.out.println("Orbit");
                             Direction toTargetArchon = myLocation.directionTo(ENEMY_ARCHON.getLocation());
-                            tryMove(toTargetArchon, 15, 12);
+                            moveToTarget(ENEMY_ARCHON.getLocation());
                             break;
                         case KillScout:
                             System.out.println("KillScout");
@@ -171,7 +171,7 @@ public class Scout extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillScout);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -187,7 +187,7 @@ public class Scout extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillGardener);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillGardener = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -199,8 +199,8 @@ public class Scout extends Robot {
                     }
 
                     if (ENEMY_JACK_TO_AVOID != null & getRc().hasMoved() == false){
-                        Direction toTarget = myLocation.directionTo(ENEMY_JACK_TO_AVOID.getLocation());
-                        tryMove(toTarget.rotateLeftDegrees(90), 15, 12);
+                        //Direction toTarget = myLocation.directionTo(ENEMY_JACK_TO_AVOID.getLocation());
+                        moveToTarget(ENEMY_JACK_TO_AVOID.getLocation());
                     }
 
                     // Clock.yield() makes the robot wait until the next turn, then it will perform this loop again

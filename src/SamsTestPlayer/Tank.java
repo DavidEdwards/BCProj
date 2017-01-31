@@ -110,18 +110,18 @@ public class Tank extends Robot {
 
                             if(Archons.isEmpty()){
                                 Direction toTarget = myLocation.directionTo(targetEnemyArchonStart);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(targetEnemyArchonStart);
                             }else if(Archons.size() == 1){
                                 MapLocation ArcLoc = (MapLocation) Archons.get(0);
                                 Direction toTarget = myLocation.directionTo(ArcLoc);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(ArcLoc);
                             }else if(Archons.size() > 1){
                                 int number = rand.nextInt(Archons.size());
                                 System.out.println("Random: " + number);
 
                                 MapLocation ArcLoc = (MapLocation) Archons.get(number);
                                 Direction toTarget = myLocation.directionTo(ArcLoc);
-                                tryMove(toTarget, 15, 12);
+                                moveToTarget(ArcLoc);
                             }
                             break;
                         case KillSolider:
@@ -131,7 +131,7 @@ public class Tank extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillSolider);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillSolider = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -147,7 +147,7 @@ public class Tank extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillTank);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillTank = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -163,7 +163,7 @@ public class Tank extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillScout);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -179,7 +179,7 @@ public class Tank extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillLumberjack);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillLumberjack = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -195,7 +195,7 @@ public class Tank extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillArchon);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillArchon = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
@@ -211,7 +211,7 @@ public class Tank extends Robot {
                             System.out.println("Range to target: " + getRange(TargetRobot.getLocation()));
 
                             if(getRange(TargetRobot.getLocation()) > 2.5){
-                                tryMove(ToKillGardener);
+                                moveToTarget(TargetRobot.getLocation());
                                 ToKillGardener = myLocation.directionTo(TargetRobot.getLocation());
                             }
 

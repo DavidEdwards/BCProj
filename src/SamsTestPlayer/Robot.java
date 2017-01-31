@@ -195,13 +195,13 @@ public abstract class Robot implements Runnable {
     /**
      * Attempts to move in a given direction, while avoiding small obstacles directly in the path.
      *
-     * @param dir The intended direction of movement
+     *
      * @return true if a move was performed
      * @throws GameActionException
      */
-    protected boolean tryMove(Direction dir) throws GameActionException {
-        return tryMove(dir,20,3);
-    }
+    //protected boolean tryMove(MapLocation target, float strideRadius) throws GameActionException {
+    //    return slugMove(target,strideRadius);
+    //}
 
     /**
      * Attempts to move in a given direction, while avoiding small obstacles direction in the path.
@@ -212,6 +212,7 @@ public abstract class Robot implements Runnable {
      * @return true if a move was performed
      * @throws GameActionException
      */
+
     protected boolean tryMove(Direction dir, float degreeOffset, int checksPerSide) throws GameActionException {
 
         // First, try intended direction
@@ -229,6 +230,7 @@ public abstract class Robot implements Runnable {
             if(getRc().canMove(dir.rotateLeftDegrees(degreeOffset*currentCheck))) {
                 lastLocation = rc.getLocation();
                 getRc().move(dir.rotateLeftDegrees(degreeOffset*currentCheck));
+
                 return true;
             }
             // Try the offset on the right side
@@ -243,6 +245,68 @@ public abstract class Robot implements Runnable {
 
         // A move never happened, so return false.
         return false;
+    }
+
+    static ArrayList<MapLocation> oldLocations = new ArrayList<MapLocation>();
+
+    protected boolean slugMoveToTarget(MapLocation target, float strideRadius) throws GameActionException{
+
+        // when trying to move, let's look forward, then incrementing left and right.
+        float[] toTry = {0, (float)Math.PI/4, (float)-Math.PI/4, (float)Math.PI/2, (float)-Math.PI/2, 3*(float)Math.PI/4, -3*(float)Math.PI/4, -(float)Math.PI};
+
+        MapLocation ourLoc = getRc().getLocation();
+        Direction toMove = ourLoc.directionTo(target);
+
+        // let's try to find a place to move!
+        for (int i = 0; i < toTry.length; i++) {
+            Direction dirToTry = toMove.rotateRightDegrees(toTry[i]);
+            if (getRc().canMove(dirToTry, strideRadius)) {
+                // if that location is free, let's see if we've already moved there before (aka, it's in our tail)
+                MapLocation newLocation = ourLoc.add(dirToTry, strideRadius);
+                boolean haveWeMovedThereBefore = false;
+                for (int j = 0; j < oldLocations.size(); j++) {
+                    if (newLocation.distanceTo(oldLocations.get(j)) < strideRadius * strideRadius) {
+                        haveWeMovedThereBefore = true;
+                        break;
+                    }
+                }
+                if (!haveWeMovedThereBefore) {
+                    oldLocations.add(newLocation);
+                    if (oldLocations.size() > 10) {
+                        // remove the head and chop the list down to size 10 (or whatever you want to use)
+                    }
+                    if (! getRc().hasMoved() && getRc().canMove(dirToTry, strideRadius)) {
+                        getRc().move(dirToTry, strideRadius);
+                    }
+                    return(true);
+                }
+
+            }
+        }
+        //looks like we can't move anywhere
+        return(false);
+
+    }
+
+    protected boolean moveToTarget(MapLocation location) throws GameActionException{
+        // try to take a big step
+        if (slugMoveToTarget(location, rc.getType().strideRadius)) {
+            return(true);
+        }
+        // try to take a smaller step
+        if (slugMoveToTarget(location, rc.getType().strideRadius/2)) {
+            return(true);
+        }
+        // try to take a baby step
+        if (slugMoveToTarget(location, rc.getType().strideRadius/4)) {
+            return(true);
+        }
+        else {
+            //wander();
+            return(false);
+        }
+        // insert move randomly code here
+
     }
 
     /**

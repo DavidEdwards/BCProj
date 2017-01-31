@@ -31,7 +31,7 @@ public class Archon extends Robot {
                 // Try/catch blocks stop unhandled exceptions, which cause your robot to explode
                 try {
                     Archondir = Archondir.rotateRightDegrees(45);
-                    tryMove(Archondir);
+                    tryMove(Archondir, 15, 12);
                     checkForLeader(getRc().getRoundNum(), getRc().readBroadcast(LEADER), 10);
                     if (isLeader()) {
                         LeaderCode();
