@@ -18,6 +18,10 @@ public abstract class Robot implements Runnable {
     public static int SCOUT = 8;
     public static int SOLDIER = 9;
     public static int TANK = 10;
+    public static int MAX_GARDENERS_CHANNEL = 11;
+    public static int MAX_LUMBERJACKS_CHANNEL = 12;
+    public static int MAX_SOLDIERS_CHANNEL = 13;
+
 
     protected MapLocation[] enemyArchonStart = null;
     protected MapLocation targetEnemyArchonStart = null;
@@ -67,6 +71,12 @@ public abstract class Robot implements Runnable {
     }
 
     protected void LeaderCode() throws GameActionException {
+
+        if(getMaxGardeners() == 0)
+        {
+            getRc().broadcast(MAX_GARDENERS_CHANNEL, 1);
+        }
+
         TreeInfo[] trees = getRc().senseNearbyTrees();
         int count = 0;
         for (TreeInfo t : trees) {
@@ -124,6 +134,15 @@ public abstract class Robot implements Runnable {
         }
     }
 
+    public int getMaxGardeners() {
+        try {
+            return getRc().readBroadcast(MAX_GARDENERS_CHANNEL);
+        } catch (GameActionException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
     protected float getRange(MapLocation Target) {
         return getRc().getLocation().distanceTo(Target);
     }
@@ -145,6 +164,16 @@ public abstract class Robot implements Runnable {
         } catch (GameActionException e) {
             e.printStackTrace();
         }
+    }
+
+    public RobotInfo FindRobotType(RobotInfo robots[] , RobotType type) {
+        for (RobotInfo r : robots) {
+            if(r.getType() == type) {
+                return r;
+            }
+        }
+
+        return null;
     }
 
     /**

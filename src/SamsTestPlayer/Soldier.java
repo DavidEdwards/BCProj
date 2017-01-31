@@ -92,6 +92,12 @@ public class Soldier extends Robot {
                             RobotTask = TaskList.KillArchon;
                         }
                     }
+                    if(RobotTask == TaskList.None) {
+                        if (FindRobotType(robots, RobotType.GARDENER) != null) {
+                            TargetRobot = FindRobotType(robots, RobotType.GARDENER);
+                            RobotTask = TaskList.KillGardener;
+                        }
+                    }
                     //6, search
                     if(RobotTask == TaskList.None) {
                         RobotTask = TaskList.Search;
@@ -130,9 +136,9 @@ public class Soldier extends Robot {
                                 ToKillSolider = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
-                            if (getRc().canFireSingleShot()) {
+                            if (getRc().canFirePentadShot()) {
                                 // ...Then fire a bullet in the direction of the enemy.
-                                getRc().fireSingleShot(ToKillSolider);
+                                getRc().firePentadShot(ToKillSolider);
                             }
                             break;
                         case KillTank:
@@ -146,9 +152,9 @@ public class Soldier extends Robot {
                                 ToKillTank = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
-                            if (getRc().canFireSingleShot()) {
+                            if (getRc().canFirePentadShot()) {
                                 // ...Then fire a bullet in the direction of the enemy.
-                                getRc().fireSingleShot(ToKillTank);
+                                getRc().firePentadShot(ToKillTank);
                             }
                             break;
                         case KillScout:
@@ -162,9 +168,9 @@ public class Soldier extends Robot {
                                 ToKillScout = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
-                            if (getRc().canFireSingleShot()) {
+                            if (getRc().canFirePentadShot()) {
                                 // ...Then fire a bullet in the direction of the enemy.
-                                getRc().fireSingleShot(ToKillScout);
+                                getRc().firePentadShot(ToKillScout);
                             }
                             break;
                         case KillLumberjack:
@@ -178,9 +184,9 @@ public class Soldier extends Robot {
                                 ToKillLumberjack = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
-                            if (getRc().canFireSingleShot()) {
+                            if (getRc().canFirePentadShot()) {
                                 // ...Then fire a bullet in the direction of the enemy.
-                                getRc().fireSingleShot(ToKillLumberjack);
+                                getRc().firePentadShot(ToKillLumberjack);
                             }
                             break;
                         case KillArchon:
@@ -194,9 +200,9 @@ public class Soldier extends Robot {
                                 ToKillArchon = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
-                            if (getRc().canFireSingleShot()) {
+                            if (getRc().canFirePentadShot()) {
                                 // ...Then fire a bullet in the direction of the enemy.
-                                getRc().fireSingleShot(ToKillArchon);
+                                getRc().firePentadShot(ToKillArchon);
                             }
                             break;
                         case KillGardener:
@@ -210,9 +216,9 @@ public class Soldier extends Robot {
                                 ToKillGardener = myLocation.directionTo(TargetRobot.getLocation());
                             }
 
-                            if (getRc().canFireSingleShot()) {
+                            if (getRc().canFirePentadShot()) {
                                 // ...Then fire a bullet in the direction of the enemy.
-                                getRc().fireSingleShot(ToKillGardener);
+                                getRc().firePentadShot(ToKillGardener);
                             }
                             break;
                     }
@@ -232,15 +238,7 @@ public class Soldier extends Robot {
         }
     }
 
-    public RobotInfo FindRobotType(RobotInfo robots[] , RobotType type) {
-        for (RobotInfo r : robots) {
-            if(r.getType() == type) {
-                return r;
-            }
-        }
 
-        return null;
-    }
     @Override
     public void reportAlive() {
         super.reportAlive();

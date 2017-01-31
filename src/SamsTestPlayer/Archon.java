@@ -14,6 +14,14 @@ public class Archon extends Robot {
     public void run() {
         try {
             Direction Archondir = Direction.getNorth();
+            Team enemy = getRc().getTeam().opponent();
+            enemyArchonStart = getRc().getInitialArchonLocations(enemy); //targetEnemyArchonStart
+            if(enemyArchonStart.length == 1){
+                targetEnemyArchonStart = enemyArchonStart[0];
+            }else{
+                int randomNum = rand.nextInt(enemyArchonStart.length - 1);
+                targetEnemyArchonStart = enemyArchonStart[randomNum];
+            }
 
             while (isRunning()) {
                 if (getRc().getHealth() < (getMaxHealth() / 10)) {
@@ -30,13 +38,24 @@ public class Archon extends Robot {
                     }
 
                     // Generate a random direction
-                    Direction dir = randomDirection();
+                    Direction dir = getRc().getLocation().directionTo(targetEnemyArchonStart);
 
                     // Randomly attempt to build a gardener in this direction
-                    if (getRc().getBuildCooldownTurns() == 0) {
-                        if (getRc().getTeamBullets() > 100 && getRc().canBuildRobot(RobotType.GARDENER, dir) && getRc().readBroadcast(GARDENER) < Robot.MAX_GARDENERS) {
-                            getRc().hireGardener(dir);
+                    if (getRc().getTeamBullets() > 100 && getRc().getBuildCooldownTurns() == 0 && getRc().readBroadcast(GARDENER) < getMaxGardeners()) {
+                        System.out.println("Trying to build");
+                        for(int l=0; l<359; l=l+10){
+                        //int l = 0;
+                            System.out.println("Adding degrees: " + l);
+                            if (getRc().canBuildRobot(RobotType.GARDENER, dir.rotateLeftDegrees(l)) )
+                            {
+                                System.out.println("Can build");
+                                getRc().hireGardener(dir.rotateLeftDegrees(l));
+                                //break;
+                            }else{
+                                System.out.println("Can not build");
+                            }
                         }
+
                     }
 
                     //wander();
